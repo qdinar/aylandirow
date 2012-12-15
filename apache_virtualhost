@@ -1,0 +1,22 @@
+<VirtualHost *:80>
+	ServerName aylandirow.tmf.org.ru
+	ServerAlias *.aylandirow.tmf.org.ru
+	DocumentRoot /var/www/saytlar/aylandirow/
+#php
+	Options +ExecCGI
+	AddHandler fcgid-script .php
+	SuexecUserGroup ayl ayl
+	FCGIWrapper /var/www/fcgid/ayl/php-wrapper .php
+	<Directory /var/www/saytlar/aylandirow/ >
+		Allow from all
+	</Directory>
+
+RewriteEngine On
+RewriteRule .* /var/www/saytlar/aylandirow/index.php
+
+
+ErrorLog "|/usr/bin/cronolog --period 1days /var/log/apache2/aylandirow/%Y/%m/hata/%d.txt"
+CustomLog "|/usr/bin/cronolog --period 1days /var/log/apache2/aylandirow/%Y/%m/%d.txt" vhost_combined_new
+
+</VirtualHost>
+
