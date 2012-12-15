@@ -1,0 +1,224 @@
+<?php
+			if(convertmain($birsuzh)){
+				//$ns.=$birsuzh;
+				$ns.=$convertmain[$birsuzh];
+			//}elseif($birsuzh=='в'||$birsuzh=='В'){
+				//for($j=0;$j<$vuto;$j++){
+				//	if(mb_substr($birsuz,$i2,mb_strlen($vut[$j]))==$vut[$j]){
+				//		$ns.=($birsuzh=='в'?'v':'V');
+				//		$i2+=1;
+				//		continue 2;
+				//	}
+				//}
+				//$ns.=($birsuzh=='в'?'w':'W');
+			}elseif($birsuzh=='г'||$birsuzh=='Г'){
+				//$ns.='ok';
+				if($suzbaso){
+					for($j=0;$j<$guto;$j++){
+						if(mb_strtolower(mb_substr($birsuz,$i2,mb_strlen($gut[$j])))==$gut[$j]){
+							$ns.=($birsuzh=='г'?'g':'G');
+							$i2+=1;
+							continue 2;
+						}
+					}
+				}
+				$birsuzhp1=mb_substr($birsuz,$i2+1,1);//false була ала
+				if(
+$birsuzhp1=='а'||$birsuzhp1=='о'||$birsuzhp1=='О'||$birsuzhp1=='А'
+				){
+					$j=1;//"карагаем" кебек сүзләрне монда j=2 дип куеп кына төзәтеп булмый, чөнки j=2 дән башланганда бу икенче сүз башына эләгә ала
+					do{
+						$j+=1;//"га дальше" булганда hp1=а, бу башлана " " дан... "карагаем" дигәндә "е"дән.
+						$x=mb_substr($birsuz,$i2+$j,1);
+					}while(
+						tartoq($x)||
+						$x=='я'||$x=='Я'||//гаять,гаярь
+						($j==2&&($x=='е'||$x=='Е'))//карагаем,тугаем
+					);
+					//хәзер икс йә сузык, йә пробел-мазар
+					if(
+$x=='ь'/*гарь*/||$x=='ә'/*гаҗәп*/||$x=='е'/*гомер*/||$x=='Ь'||$x=='Ә'||$x=='Е'
+					){
+						//$ns.='OK';
+						//$ns.='OK'.$x.'OK';
+						$ns.=($birsuzh=='г'?'ğ':'Ğ');
+						$ns.=$nickartao[$birsuzhp1];
+						$i2+=1;
+					//}elseif($x=='и'/*галим*/||$x=='И'){
+					//	$ns.=($birsuzh=='г'?'ğ':'Ğ');
+					//	$ns.=$convertao[$birsuzhp1];
+					//	$i2+=1;
+					//}elseif(($birsuzhp1=='а'||$birsuzhp1=='А')&&()/*гаеп*/){
+					}else{
+						$ns.=($birsuzh=='г'?'ğ':'Ğ');
+						/*"гаеп":*/
+						if($suzbaso){
+							$birsuzhp2=mb_substr($birsuz,$i2+2,1);
+							if(($birsuzhp1=='а'||$birsuzhp1=='А')&&($birsuzhp2=='е'||$birsuzhp2=='Е')){
+								$ns.=($birsuzhp1=='а'?'ǝ':'Ə');
+								$ns.=($birsuzhp2=='е'?'ye':'Ye');
+								$i2+=2;
+							}
+						}
+					}
+				}elseif($birsuzhp1=='ы'||$birsuzhp1=='Ы'){
+					$ns.=($birsuzh=='г'?'ğ':'Ğ');
+					$birsuzhp2=mb_substr($birsuz,$i2+2,1);//false була ала
+					if($birsuzhp2=='й'||$birsuzhp2=='Й'){//гыйрак
+						$ns.=($birsuzhp1=='ы'?'i':'İ');
+						$i2+=2;
+					}else{
+						$ns.=($birsuzhp1=='ы'?'ı':'Ы');
+						$i2+=1;
+					}
+				}else{//гәп,грамм
+					$ns.=($birsuzh=='г'?'g':'G');
+				}
+			}elseif($birsuzh=='е'||$birsuzh=='ю'||$birsuzh=='я'||$birsuzh=='Е'||$birsuzh=='Ю'||$birsuzh=='Я'){//
+				if(
+				$suzbaso //|| ( !$suzbaso&&!($birsuzh=='е'||$birsuzh=='Е') )
+				){
+					$j=0;
+					do{
+						$j+=1;
+						$x=mb_substr($birsuz,$i2+$j,1);
+					}while(tartoq($x));
+					if(
+$x=='е'/*егет,юеш,*/||$x=='ә'/*ефәк,юкә,ярәш*/||$x=='и'/*юри,яки*/||$x=='ь'/*юнь,яшь*/||
+$x=='Е'||$x=='Ә'||$x=='И'||$x=='Ь'
+					){
+						//$ns.=($birsuzh=='е'?'ye':'Ye');
+						$ns.=$nickartyeyuya[$birsuzh];
+					}else{/*ерак*/
+						//$ns.=($birsuzh=='е'?'yı':'Yı');
+						$ns.=$convertyeyuya[$birsuzh];
+					}
+				}else{//сүз эче
+					$birsuzhm1=mb_substr($birsuz,$i2-1,1);
+					if(//каек һ.б., сагаеп, карагаем, ә "гаеп" - искәрмә
+$birsuzhm1=='а'/*гаеп,бае,гаять,гаярь,таяк*/||$birsuzhm1=='ы'/*кыяк,сыя,сыю,сые*/||$birsuzhm1=='о'/*тоем,тою,тоя*/||$birsuzhm1=='у'/*уем,ую,уя*/||
+$birsuzhm1=='А'||$birsuzhm1=='Ы'||$birsuzhm1=='О'||$birsuzhm1=='У'
+					){
+						//$ns.=($birsuzh=='е'?'ye':'Ye');
+						if($birsuzhm1=='а'||$birsuzhm1=='А'){/*ае,ая,аю*/
+							$j=1;
+							do{
+								$j+=1;//гаярь булганда "ь"дан башлана
+								$x=mb_substr($birsuz,$i2+$j,1);
+							}while(tartoq($x));
+							if($x=='ь'||$x=='е'||$x=='Ь'||$x=='Е'){
+								$ns.=$nickartyeyuya[$birsuzh];
+							}else{
+								$ns.=$convertyeyuya[$birsuzh];
+							}
+						}else{
+							$ns.=$convertyeyuya[$birsuzh];
+						}
+					}elseif(
+$birsuzhm1=='ә'/*чәе*/||$birsuzhm1=='и'/*чия*/||$birsuzhm1=='ө'/*чөя*/||$birsuzhm1=='ү'/*гүя*/||
+$birsuzhm1=='Ә'||$birsuzhm1=='И'||$birsuzhm1=='Ө'||$birsuzhm1=='Ү'
+					){
+						$ns.=$nickartyeyuya[$birsuzh];
+					}else{//кабер,калеб,наиля,тюк
+						$ns.=($birsuzh=='е'?'e':'E');
+						//$ns.=$converteua[$birsuzh];
+					}
+				}
+			//}elseif($suzbaso&&($birsuzh=='ё'||$birsuzh=='Ё')){//
+			//	$ns.=($birsuzh=='ё'?'yo':'Yo');
+			}elseif($birsuzh=='к'||$birsuzh=='К'){//
+				if($suzbaso){
+					for($j=0;$j<$kuto;$j++){
+						if(mb_strtolower(mb_substr($birsuz,$i2,mb_strlen($kut[$j])))==$kut[$j]){
+							$ns.=($birsuzh=='к'?'k':'K');
+							$i2+=1;
+							continue 2;
+						}
+					}
+				}
+				$birsuzhp1=mb_substr($birsuz,$i2+1,1);//false була ала, йә пробел-мазар
+				if(
+$birsuzhp1=='а'/*каләм,калак*/||$birsuzhp1=='А'
+				){
+					$j=1;//j=2 дип чишү хатага китерә
+					do{
+						$j+=1;
+						$x=mb_substr($birsuz,$i2+$j,1);
+					}while(
+						tartoq($x)||
+						($j==2&&($x=='е'||$x=='Е'))
+					);
+					//хәзер икс йә сузык, йә пробел-мазар
+					if(
+$x=='ә'/*каләм*/||$x=='е'/*калеб*/||$x=='Ә'||$x=='Е'
+					){
+						$ns.=($birsuzh=='к'?'q':'Q');
+						$ns.=$nickartao[$birsuzhp1];
+						$i2+=1;
+					}else{//кабил,кап; каен
+						$ns.=($birsuzh=='к'?'q':'Q');
+					}
+				}elseif(
+$birsuzhp1=='у'/*куен*/||$birsuzhp1=='о'/*коерык*/||$birsuzhp1=='ы'/*кыен*/||
+$birsuzhp1=='У'||$birsuzhp1=='О'||$birsuzhp1=='Ы'
+				){
+					$ns.=($birsuzh=='к'?'q':'Q');
+				}elseif(!kirillitsa($birsuzhp1)){//сүз ахыры
+					//$ns.='OK';
+					if(!$suzbaso){//сүз башы булмаса алдагы хәрефләрне карыйм
+						//$ns.='OK';
+						$birsuzhm1=mb_substr($birsuz,$i2-1,1);
+						if(
+$birsuzhm1=='а'/*ак*/||$birsuzhm1=='ы'/*ык*/||$birsuzhm1=='я'/*таяк,як*/||$birsuzhm1=='А'||$birsuzhm1=='Ы'||$birsuzhm1=='Я'
+						){
+							$ns.=($birsuzh=='к'?'q':'Q');
+						}elseif($birsuzhm1=='е'/*аек,белек*/||$birsuzhm1=='Е'){
+							//$ns.='OK';
+							if($i2==1){//^ек
+								//$ns.='OK';
+								$ns.=($birsuzh=='к'?'q':'Q');
+							}else{//аек,белек
+								$birsuzhm2=mb_substr($birsuz,$i2-2,1);
+								if(
+$birsuzhm2=='а'||$birsuzhm2=='А'||$birsuzhm2=='ы'||$birsuzhm2=='Ы'||$birsuzhm2=='у'||$birsuzhm2=='У'||$birsuzhm2=='о'||$birsuzhm2=='О'||!kirillitsa($birsuzhm2)
+								){
+									$ns.=($birsuzh=='к'?'q':'Q');
+								}else{
+									$ns.=($birsuzh=='к'?'k':'K');
+								}
+							}
+						}else{//бик,чиләк
+							$ns.=($birsuzh=='к'?'k':'K');
+						}
+					}else{
+						$ns.=($birsuzh=='к'?'k':'K');
+					}
+				}else{//күмер,шикәр, сүз ахыры түгел, нечкә хәреф йә тартык алдындагы к
+					//$ns.='OK';
+					$ns.=($birsuzh=='к'?'k':'K');
+				}
+			}elseif($birsuzh=='у'||$birsuzh=='У'){//
+				$birsuzhm1=mb_substr($birsuz,$i2-1,1);
+				if($birsuzhm1=='а'||$birsuzhm1=='А'){
+					$ns.=($birsuzh=='у'?'w':'W');
+				}else{
+					$ns.=($birsuzh=='у'?'u':'U');
+				}
+			}elseif($birsuzh=='ү'||$birsuzh=='Ү'){//
+				$birsuzhm1=mb_substr($birsuz,$i2-1,1);
+				if($birsuzhm1=='ә'||$birsuzhm1=='Ә'){
+					$ns.=($birsuzh=='ү'?'w':'W');
+				}else{
+					$ns.=($birsuzh=='ү'?'ü':'Ü');
+				}
+			}elseif($birsuzh=='ц'||$birsuzh=='Ц'){//
+				if($suzbaso){
+					$ns.=($birsuzh=='ц'?'s':'S');
+				}else{
+					$ns.=($birsuzh=='ц'?'ts':'Ts');
+				}
+			}else{//
+				$ns.=$birsuzh;
+			}
+
+?>

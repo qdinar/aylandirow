@@ -1,0 +1,31 @@
+<?php
+$torok='öüığşçÖÜİĞŞÇabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+$tatar='өүыгшчӨҮИГШЧабҗдәфгхижклмнопкрстуввхйзАБҖДӘФГХЫЖКЛМНОПКРСТУВВХЙЗ';
+$torok=preg_split('//u',$torok);
+$tatar=preg_split('//u',$tatar);
+$torok=array_splice($torok,1,count($torok)-2);
+$tatar=array_splice($tatar,1,count($tatar)-2);
+function toroktantatarga($s) {
+	global $torok, $tatar;
+	return str_replace($torok,$tatar,$s);
+}
+
+header('Content-Type: text/html; charset=utf-8');
+$s=substr($_SERVER['REQUEST_URI'],17);
+$adres='http://'.$s;
+$d=new DOMDocument();
+$d->loadHTMLFile($adres);
+$e=$d->getElementsByTagName('*');
+foreach($e as $bir_e){
+	if($bir_e->hasChildNodes()){
+		$ee=$bir_e->childNodes;
+		foreach($ee as $bir_ee){
+			if($bir_ee->nodeType==XML_TEXT_NODE){
+				$bir_ee->nodeValue = toroktantatarga($bir_ee->nodeValue);
+			}
+		}
+	}
+}
+$s=$d->saveHTML();
+echo $s;
+?>
