@@ -29,7 +29,7 @@ if(!$kesislay){
 $maglumat.='<br />Бит әйләндерелеп бетмәсә, яңартып карагыз';
 }
 $maglumat.=
-'<br /><form method="POST" action="http://aylandirow.tmf.org.ru/" style="margin:0px;">
+'<br /><form method="POST" action="http://'.TOPDOMEN.'/" style="margin:0px;">
 <input type="text" name="ba" value="'.str_replace('&','&amp;',$ba).'" style="width:100%;" /><br />
 Латин язуы төре: <select name="yunalis">
 <option value="ttcysuttlart1999" '.($til=='ttcysuttlart1999'?'selected="selected" ':'').'>ТР 1999 проекты</option>
@@ -40,7 +40,7 @@ $maglumat.=
 }
 $iglan->appendXML('<div style="position:fixed;z-index:32767;top:70px;left:100px;background:#fff;border:1px solid #eee;direction:ltr;text-align:center;width:700px;font-size:10pt;">
 <span style="border:1px solid #eee;cursor:pointer;padding:2px 5px;float:left;" onclick=\'this.parentNode.style.visibility="hidden";\'>X</span>
-Бу aylandirow.tmf.org.ru үзгәртеп күрсәткән сайт!
+Бу '.TOPDOMEN.' үзгәртеп күрсәткән сайт!
 <span style="border:1px solid #eee;cursor:pointer;padding:2px 5px;float:right;" onclick=\'this.parentNode.style.visibility="hidden";\'>X</span><br />
 Бу әйләндергеч хәзер UTC+4 тәгечә төнлә якынча 23 тән 9 гача эшләми.<br />
 Бу әйләндергеч аркылы сайтларга язып булмый<br />

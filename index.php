@@ -79,7 +79,7 @@ if($doo>5){
 	//echo($ba);
 	//exit;
 	if($bd=='www.matbugat.ru'){
-		header('Location: http://matbugat.ru.'.$til.'.aylandirow.tmf.org.ru'.$ru);
+		header('Location: http://matbugat.ru.'.$til.'.'.TOPDOMEN.$ru);
 		exit;
 	}elseif($bd=='www.facebook.com'&&substr($ru,0,17)=='/plugins/like.php'){
 		header('Location: http://www.facebook.com'.$ru);
@@ -157,11 +157,11 @@ disallow: /
 		}
 		$pathstart=strpos($ba,'/');
 		if($pathstart===false){
-			header('Location: http://'. $ba. '.'. $til. '.aylandirow.tmf.org.ru/');
+			header('Location: http://'. $ba. '.'. $til. '.'.TOPDOMEN.'/');
 		}else{
 			$bd=substr($ba,0,$pathstart);
 			$bp=substr($ba,$pathstart);
-			header('Location: http://'. $bd. '.'. $til. '.aylandirow.tmf.org.ru'.$bp);
+			header('Location: http://'. $bd. '.'. $til. '.'.TOPDOMEN.$bp);
 		}
 	}elseif($ru=='/'){
 		for($i=0;$i<count($ttcysusayt);$i++){
@@ -182,17 +182,17 @@ disallow: /
 	
 	$pathstart=strpos($ba,'/');
 	if($pathstart===false){
-		header('Location: http://'. $ba. '.'. $til. '.aylandirow.tmf.org.ru/');
+		header('Location: http://'. $ba. '.'. $til. '.'.TOPDOMEN.'/');
 	}else{
 		$bd=substr($ba,0,$pathstart);
 		$bp=substr($ba,$pathstart);
-		header('Location: http://'. $bd. '.'. $til. '.aylandirow.tmf.org.ru'.$bp);
+		header('Location: http://'. $bd. '.'. $til. '.'.TOPDOMEN.$bp);
 	}
 	exit;
 }
 
 if($til=='qazaqtantatarga'){
-	header('Location: http://'. $bd. '.kkcysuttcysu-2.aylandirow.tmf.org.ru'.$ru);
+	header('Location: http://'. $bd. '.kkcysuttcysu-2.'.TOPDOMEN.$ru);
 	exit;
 }
 
@@ -234,7 +234,7 @@ $ba='http://'.$ba;
 //}
 $mt=strtotime($mts);
 $alu=curl_init($ba);
-curl_setopt($alu,CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT'].' '.$til.'.aylandirow.tmf.org.ru');
+curl_setopt($alu,CURLOPT_USERAGENT,$_SERVER['HTTP_USER_AGENT'].' '.$til.'.'.TOPDOMEN);
 curl_setopt($alu,CURLOPT_AUTOREFERER,TRUE);
 curl_setopt($alu,CURLOPT_FOLLOWLOCATION,TRUE);//false куйсаң эшләми икән
 curl_setopt($alu,CURLOPT_MAXREDIRS,0);//дөрес эшләмәй: хедырны бирмәй
@@ -312,7 +312,7 @@ if(substr($referer,0,7)=='http://'){
 		$rp=substr($referer,$pathstart);
 	}
 	$uzdo=21;//strlen('aylandirow.tmf.org.ru');//21
-	if(substr($rd,strlen($rd)-$uzdo)=='aylandirow.tmf.org.ru'){
+	if(substr($rd,strlen($rd)-$uzdo)==TOPDOMEN){
 		$rdo=explode('.',$rd);
 		$rdoo=count($rdo);
 		//if(in_array($rdo[$rdoo-5],$rohsattil)){
@@ -394,11 +394,11 @@ if($hc==302||$hc==301){
 	}
 	
 	if($pathstart===false){
-		header('Location: http://'.$eu.'.'.$til.'.aylandirow.tmf.org.ru/');
+		header('Location: http://'.$eu.'.'.$til.'.'.TOPDOMEN.'/');
 	}else{
 		$eud=substr($eu,0,$pathstart);
 		$eup=substr($eu,$pathstart);
-		header('Location: http://'.$eud.'.'.$til.'.aylandirow.tmf.org.ru'.$eup);
+		header('Location: http://'.$eud.'.'.$til.'.'.TOPDOMEN.$eup);
 	}
 	//}else{
 		//echo('ok');
@@ -522,16 +522,16 @@ function aylandirilgan_url($h){//http:// белән генә дөрес эшли
 	//$debug.=substr($hd,-22);
 	//$debug.=$hd;
 	//$debug.=$h;
-	if(substr($hd,-22)=='.aylandirow.tmf.org.ru'){
+	if(substr($hd,-22)=='.'.TOPDOMEN){
 		return 'http://'. $h;
 	}
 	
 	if($pathstart===false){
-		return 'http://'. $h. '.'. $til. '.aylandirow.tmf.org.ru/';
+		return 'http://'. $h. '.'. $til. '.'.TOPDOMEN.'/';
 	}else{
 		//$hd=substr($h,0,$pathstart);
 		$hp=substr($h,$pathstart);
-		return 'http://'. $hd. '.'. $til. '.aylandirow.tmf.org.ru'.$hp;
+		return 'http://'. $hd. '.'. $til. '.'.TOPDOMEN.$hp;
 	}
 	//}else{
 	//	return 'http://aylandirow.tmf.org.ru/'.$til.'/'.substr($h,7);
