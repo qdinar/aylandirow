@@ -45,7 +45,6 @@ $iglan->appendXML('<div style="position:fixed;z-index:32767;top:70px;left:100px;
 <span style="border:1px solid #eee;cursor:pointer;padding:2px 5px;float:left;" onclick=\'this.parentNode.style.visibility="hidden";\'>X</span>
 Бу '.TOPDOMEN.' үзгәртеп күрсәткән сайт!
 <span style="border:1px solid #eee;cursor:pointer;padding:2px 5px;float:right;" onclick=\'this.parentNode.style.visibility="hidden";\'>X</span><br />
-Бу әйләндергеч хәзер UTC+4 тәгечә төнлә якынча 23 тән 9 гача эшләми.<br />
 Бу әйләндергеч аркылы сайтларга язып булмый<br />
 <a href="'.str_replace('&','&amp;',$ba).'" target="_blank" id="conadres">Чын адресына күчү</a><br />'.
 //(($til=='ttcysuttlart1999'||$til=='ttcysuttlasu')?('<a href="http://qdinar.wp.kukmara-rayon.ru/2012/03/19/latinlastorgoc-funktsiyani-satam/" target="_blank">Бу латинлаштыргыч php функциясен барча халыкка 1000 сумга сатмакчымын</a><br/>'):'').
