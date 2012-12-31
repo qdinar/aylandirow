@@ -5,6 +5,13 @@ $tw1=microtime(true);
 mb_internal_encoding('UTF-8');
 libxml_use_internal_errors(true);
 define('TOPDOMEN','aylandirow.tmf.org.ru');
+/*if(function_exists('apc_fetch')){
+	define('USECACHE',true);
+}else{
+	define('USECACHE',false);
+}*/
+	define('USECACHE',false);
+
 $topdomeno=explode('.',TOPDOMEN);
 $topdomenoo=count($topdomeno);
 $debug='';
@@ -846,15 +853,19 @@ function yoropcoq($current_node){
 				//бу өлеш асттан копияләнде һәм бер аз үзгәртелде
 				if(!$jitti){
 					$tmps=$current_child->getAttribute('title');
-					$tmpsmd5=md5($til.$tmps,true);//моны яңасына күчерәсе
-					//$tmpsmd5=$tmps;//мд5 тән бер аз хужерак
-					$tmpns=apc_fetch($tmpsmd5);
-					//апс кына булып, мин моның белән тикшергән иң зур биттә дә барысы ярты секундка сыеп бетте
-					if($tmpns==false){
+					if(USECACHE){
+						$tmpsmd5=md5($til.$tmps,true);//моны яңасына күчерәсе
+						//$tmpsmd5=$tmps;//мд5 тән бер аз хужерак
+						$tmpns=apc_fetch($tmpsmd5);
+						//апс кына булып, мин моның белән тикшергән иң зур биттә дә барысы ярты секундка сыеп бетте
+						if($tmpns==false){
+							$tmpns=aylandir($tmps);
+							apc_store($tmpsmd5,$tmpns);
+						}
+						//$current_child->nodeValue=$tmpns;
+					}else{
 						$tmpns=aylandir($tmps);
-						apc_store($tmpsmd5,$tmpns);
 					}
-					//$current_child->nodeValue=$tmpns;
 					$current_child->setAttribute('title',$tmpns);
 					if(microtime(true)-$t1>20){
 						$jitti=true;
@@ -886,7 +897,9 @@ function yoropcoq($current_node){
 			$h=$current_child->getAttribute('src');
 			$h=tuloadres($base,$h);
 			if(substr($h,0,7)=='http://'){//https кирәк түгел, калсын
-				apc_store($h,true,20);
+				if(USECACHE){
+					apc_store($h,true,20);
+				}
 				$h=aylandirilgan_url($h);//әйләндерергә
 			}
 			$current_child->setAttribute('src',$h);
@@ -979,14 +992,18 @@ function yoropcoq($current_node){
 			if(!$jitti){
 				//апц ны болай түгел сүзләп кулланырга кирәк.
 				$tmps=$current_child->nodeValue;
-				$tmpsmd5=md5($til.$tmps,true);//моны яңасына күчерәсе
-				//$tmpsmd5=$tmps;//мд5 тән бер аз хужерак
-				$tmpns=apc_fetch($tmpsmd5);
-				$tmpns=false;
-				//апс кына булып, мин моның белән тикшергән иң зур биттә дә барысы ярты секундка сыеп бетте
-				if($tmpns==false){
+				if(USECACHE){
+					$tmpsmd5=md5($til.$tmps,true);//моны яңасына күчерәсе
+					//$tmpsmd5=$tmps;//мд5 тән бер аз хужерак
+					$tmpns=apc_fetch($tmpsmd5);
+					$tmpns=false;
+					//апс кына булып, мин моның белән тикшергән иң зур биттә дә барысы ярты секундка сыеп бетте
+					if($tmpns==false){
+						$tmpns=aylandir($tmps);
+						//apc_store($tmpsmd5,$tmpns);
+					}
+				}else{
 					$tmpns=aylandir($tmps);
-					//apc_store($tmpsmd5,$tmpns);
 				}
 				$current_child->nodeValue=$tmpns;
 				if(microtime(true)-$t1>20){
@@ -1334,7 +1351,9 @@ if($e->length==0){
 //	}
 //}
 */
-if($kesislay||!apc_fetch($ba)){
+if($kesislay||!USECACHE||!apc_fetch($ba)){//тулы битне кешлау эшләсә - игланны бөтен фреймнарда күрсәтәсе.
+//апс бөтенләй булмаса да игланны күрсәтәсе.
+//адрес кешга язып куелмаган булса, игланны күрсәтәсе, кешга язылган ул - ифрейм адресы
 	include('iglan.php');
 }
 //include('iglan.php');
