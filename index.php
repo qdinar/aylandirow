@@ -5,6 +5,8 @@ $tw1=microtime(true);
 mb_internal_encoding('UTF-8');
 libxml_use_internal_errors(true);
 define('TOPDOMEN','aylandirow.tmf.org.ru');
+$topdomeno=explode('.',TOPDOMEN);
+$topdomenoo=count($topdomeno);
 $debug='';
 $yuzeradmin=($_SERVER['REMOTE_ADDR']=='78.138.176.205');
 //$debug.='OK';
@@ -17,8 +19,8 @@ $ru=$_SERVER['REQUEST_URI'];
 $domain=$_SERVER['HTTP_HOST'];
 $do=explode('.',$domain);//домейн өлешләре
 $doo=count($do);
-if($doo>4){
-	$til=$do[$doo-5];
+if($doo>$topdomenoo){
+	$til=$do[$doo-$topdomenoo-1];
 	if($_SERVER['REQUEST_METHOD']=='POST'&&$ru=='/'){
 		include('post.php');
 		exit;
@@ -72,7 +74,7 @@ $ttcysusayt=array('matbugat.ru','gzalilova.narod.ru','belem.ru','beznen.ru','www
 'adiplar.narod.ru'
 );
 if($doo>5){
-	$bdo=array_slice($do,0,$doo-5);
+	$bdo=array_slice($do,0,$doo-$topdomenoo-1);
 	$bd=implode('.',$bdo);
 	$ba=$bd.$ru;
 	//echo($bd);
