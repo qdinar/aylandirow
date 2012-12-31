@@ -6,6 +6,9 @@ $reklama='Реклама: <a href="http://qdinar.wp.kukmara-rayon.ru" target="_b
 //.'<a href="http://tmf.org.ru/perevesti_yge/?t=tt" target="_blank">БДИны (Россиякүләм) күптелләштерү өчен тавыш җыю</a><br />
 //'
 .($til=='ttcysuttlart1999'?'Бу сайт авторына бу латин язуы ошамый! Чөнки латин язуының бөтен өстенлекләрен кулланмый, киресенчә, зыянлы итеп куллана. Аның тыелуы турында мин уйлыйм: Аллага шөкер!<br />
+<br />
+<a href="http://qdinar.wp.kukmara-rayon.ru/2012/12/15/sayt-teksto-aylandirgicni-tulosonca-actom/" target="_blank">
+бу әйләндергеч кодын тулысынча гпл3 рөхсәте белән ачтым</a><br />
 ':'')
 .'Монда сезнең реклама була ала.';
 
