@@ -2,51 +2,54 @@
 
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-	$ba=$_POST['ba'];
 	$til=$_POST['yunalis'];
-	if(substr($ba,0,7)=='http://'){
-		$ba=substr($ba,7);
-	}else if(substr($ba,0,8)=='https://'){
-		$ba=substr($ba,8);
-	/*
-	}else if(substr($ba,0,6)=='ftp://'){
-		header('Content-Type: text/html; charset=utf-8');
-		echo('фтпны әйләндермәй!');
-		exit;
-	*/
-	}
-	/*
-	$domen='#^([\w\-]+\.)+[\w]+#ui';
-	$domensano=preg_match($domen,$ba,$tabolgandomen);
-	if($domensano==0){
-		header('Content-Type: text/html; charset=utf-8');
-		echo('Дөрес адрес түгел');
-		exit;
-	}
-	*/
-	$pathstart=strpos($ba,'/');
-	$ikinoqtaurono=strpos($ba,':');
-	
-	if($ikinoqtaurono!==false){
-		//x.com:90/
-		if($pathstart!==false){
-			if($ikinoqtaurono<$pathstart){
-				$ba=substr($ba,0,$ikinoqtaurono).substr($ba,$pathstart);
-				$pathstart=strpos($ba,'/');
-			}//else кыскартасы түгел
-		}else{
-			$ba=substr($ba,0,$ikinoqtaurono);
-		}
-	}//else кыскартасы түгел
-	
-	if($pathstart===false){
-		header('Location: http://'. idn_to_ascii(urldecode($ba)). '.'. $til. '.'.TOPDOMEN.'/');
+	if($_POST['string']=='>'){
 	}else{
-		$bd=substr($ba,0,$pathstart);
-		$bp=substr($ba,$pathstart);
-		header('Location: http://'. idn_to_ascii(urldecode($bd)). '.'. $til. '.'.TOPDOMEN.$bp);
+		$ba=$_POST['ba'];
+		if(substr($ba,0,7)=='http://'){
+			$ba=substr($ba,7);
+		}else if(substr($ba,0,8)=='https://'){
+			$ba=substr($ba,8);
+		/*
+		}else if(substr($ba,0,6)=='ftp://'){
+			header('Content-Type: text/html; charset=utf-8');
+			echo('фтпны әйләндермәй!');
+			exit;
+		*/
+		}
+		/*
+		$domen='#^([\w\-]+\.)+[\w]+#ui';
+		$domensano=preg_match($domen,$ba,$tabolgandomen);
+		if($domensano==0){
+			header('Content-Type: text/html; charset=utf-8');
+			echo('Дөрес адрес түгел');
+			exit;
+		}
+		*/
+		$pathstart=strpos($ba,'/');
+		$ikinoqtaurono=strpos($ba,':');
+		
+		if($ikinoqtaurono!==false){
+			//x.com:90/
+			if($pathstart!==false){
+				if($ikinoqtaurono<$pathstart){
+					$ba=substr($ba,0,$ikinoqtaurono).substr($ba,$pathstart);
+					$pathstart=strpos($ba,'/');
+				}//else кыскартасы түгел
+			}else{
+				$ba=substr($ba,0,$ikinoqtaurono);
+			}
+		}//else кыскартасы түгел
+		
+		if($pathstart===false){
+			header('Location: http://'. idn_to_ascii(urldecode($ba)). '.'. $til. '.'.TOPDOMEN.'/');
+		}else{
+			$bd=substr($ba,0,$pathstart);
+			$bp=substr($ba,$pathstart);
+			header('Location: http://'. idn_to_ascii(urldecode($bd)). '.'. $til. '.'.TOPDOMEN.$bp);
+		}
+		exit;
 	}
-	exit;
 }
 
 
@@ -69,6 +72,9 @@ url:<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" /
 <option value="ttcysuttlasu" >татарча кириллицадан СССРда 1928енче елны кабул ителгән латин язуына</option>
 </select>
 <input type="submit" value="&gt;">
+<br />
+<textarea name="inputstr"><?php echo htmlspecialchars($_POST['inputstr']); ?></textarea>
+<input type="submit" name="string" value="&gt;">
 </form>
 <br />Мисаллар:<br />
 <a href="http://tt.wikipedia.org.ttcysuttlart1999.<?php echo TOPDOMEN; ?>/wiki/%D0%91%D0%B0%D1%88_%D0%B1%D0%B8%D1%82">Википедия 1999 ел проекты латин язуында</a><br />
@@ -83,6 +89,9 @@ url:<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" /
 <a href="http://tmf.org.ru/viewtopic.php?f=4&t=84"><strong>япон</strong>ча сайтны татар теленә тәрҗемәләгеч турында</a><br />
 <a href="http://tmf.org.ru/viewtopic.php?f=4&t=95">уртак, гомумән әйләндергеч турында сөйләшү</a><br />
 <br /><?php echo$reklama; ?>
+
+
+
 <td>
 <tr>
 </table>
