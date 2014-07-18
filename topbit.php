@@ -73,14 +73,14 @@ url:<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" /
 </select>
 <input type="submit" value="&gt;">
 <br />
-<textarea name="inputstr"><?php echo htmlspecialchars($_POST['inputstr']); ?></textarea>
-<input type="submit" name="string" value="&gt;">
+<?php /*if($yuzeradmin){*/ ?><textarea name="inputstr"><?php echo htmlspecialchars($_POST['inputstr']); ?></textarea>
+<input type="submit" name="string" value="&gt;"><?php /*}*/ ?>
 </form>
 <br />Мисаллар:<br />
 <a href="http://tt.wikipedia.org.ttcysuttlart1999.<?php echo TOPDOMEN; ?>/wiki/%D0%91%D0%B0%D1%88_%D0%B1%D0%B8%D1%82">Википедия 1999 ел проекты латин язуында</a><br />
 <a href="http://tt.wikipedia.org.ttcysuttlasu.<?php echo TOPDOMEN; ?>/wiki/%D0%91%D0%B0%D1%88_%D0%B1%D0%B8%D1%82">Википедия "яңалиф"тә</a><br />
 <a href="http://kk.wikipedia.org.kkcysuttcysu-2.<?php echo TOPDOMEN; ?>/wiki/%D0%91%D0%B0%D1%81%D1%82%D1%8B_%D0%B1%D0%B5%D1%82">Бер аз хәзерге татар язуына әйләндерелгән <strong>казак</strong> Википедиясы</a><br />
-<a href="http://ug.wikipedia.org.uygurdantatarga.<?php echo TOPDOMEN; ?>/wiki/Bash_Bet">Бер аз хәзерге татар язуына әйләндерелгән <strong>уйгыр</strong> Википедиясы</a><br />
+<a href="http://ug.wikipedia.org.uygurdantatarga.<?php echo TOPDOMEN; ?>/wiki/%D8%A6%DB%87%D9%8A%D8%BA%DB%87%D8%B1%DA%86%DB%95_%DB%8B%D9%89%D9%83%D9%89%D9%BE%D9%89%D8%AF%D9%89%D9%8A%DB%95">Бер аз хәзерге татар язуына әйләндерелгән <strong>уйгыр</strong> Википедиясы</a><br />
 <a href="http://tr.wikipedia.org.toroktantatarga.<?php echo TOPDOMEN; ?>/wiki/Ana_Sayfa">Бер аз хәзерге татар язуына әйләндерелгән <strong>төрек</strong> Википедиясы</a><br />
 <a href="http://ja.wikipedia.org.yaponnantatarga.<?php echo TOPDOMEN; ?>/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">Өлешчә хәзерге татар теленә тәрҗемә ителгән <strong>япон</strong> Википедиясы</a><br />
 <br />Әйләндергеч <strong>турында сөйләшүләр</strong>:<br />

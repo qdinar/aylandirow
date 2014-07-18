@@ -1,2 +1,3 @@
 RewriteEngine On
 RewriteRule .* index.php
+Deny from 85.17.73.171

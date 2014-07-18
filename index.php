@@ -34,7 +34,16 @@ if($doo>$topdomenoo){
 	}
 }else{
 	if($ru=='/'){
-		include 'topbit.php';
+		if(!isset($_POST['inputstr'])){
+			include 'topbit.php';
+		}else{
+			$ic=$_POST['inputstr'];
+			$ic='<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'.$ic;
+			$til=$_POST['yunalis'];
+			include('aylandirow.php');
+			header('Content-Type: text/html; charset=utf-8');
+			echo($ic);
+		}
 		exit;
 	}
 	$til=mb_substr($ru,1,15);
@@ -252,7 +261,7 @@ function aylandirgicwaqoto(){
 	
 	global $til;
 	$clmt=getlastmod();//converter last modified time
-	$clmt=max($clmt,filemtime('iglan.php'),filemtime('tuloadres.php'));
+	$clmt=max($clmt,filemtime('iglan.php'),filemtime('tuloadres.php'),filemtime('aylandirow.php'));
 	//if($til=='qazaqtantatarga'){
 	if($til=='kkcysuttcysu-2'){
 		$clmt=max($clmt,filemtime('qazaqtantatarga.php'),filemtime('qazaqtantatarga-yevropa.php'));
