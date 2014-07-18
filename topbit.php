@@ -3,53 +3,50 @@
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
 	$til=$_POST['yunalis'];
-	if($_POST['string']=='>'){
-	}else{
-		$ba=$_POST['ba'];
-		if(substr($ba,0,7)=='http://'){
-			$ba=substr($ba,7);
-		}else if(substr($ba,0,8)=='https://'){
-			$ba=substr($ba,8);
-		/*
-		}else if(substr($ba,0,6)=='ftp://'){
-			header('Content-Type: text/html; charset=utf-8');
-			echo('фтпны әйләндермәй!');
-			exit;
-		*/
-		}
-		/*
-		$domen='#^([\w\-]+\.)+[\w]+#ui';
-		$domensano=preg_match($domen,$ba,$tabolgandomen);
-		if($domensano==0){
-			header('Content-Type: text/html; charset=utf-8');
-			echo('Дөрес адрес түгел');
-			exit;
-		}
-		*/
-		$pathstart=strpos($ba,'/');
-		$ikinoqtaurono=strpos($ba,':');
-		
-		if($ikinoqtaurono!==false){
-			//x.com:90/
-			if($pathstart!==false){
-				if($ikinoqtaurono<$pathstart){
-					$ba=substr($ba,0,$ikinoqtaurono).substr($ba,$pathstart);
-					$pathstart=strpos($ba,'/');
-				}//else кыскартасы түгел
-			}else{
-				$ba=substr($ba,0,$ikinoqtaurono);
-			}
-		}//else кыскартасы түгел
-		
-		if($pathstart===false){
-			header('Location: http://'. idn_to_ascii(urldecode($ba)). '.'. $til. '.'.TOPDOMEN.'/');
-		}else{
-			$bd=substr($ba,0,$pathstart);
-			$bp=substr($ba,$pathstart);
-			header('Location: http://'. idn_to_ascii(urldecode($bd)). '.'. $til. '.'.TOPDOMEN.$bp);
-		}
+	$ba=$_POST['ba'];
+	if(substr($ba,0,7)=='http://'){
+		$ba=substr($ba,7);
+	}else if(substr($ba,0,8)=='https://'){
+		$ba=substr($ba,8);
+	/*
+	}else if(substr($ba,0,6)=='ftp://'){
+		header('Content-Type: text/html; charset=utf-8');
+		echo('фтпны әйләндермәй!');
+		exit;
+	*/
+	}
+	/*
+	$domen='#^([\w\-]+\.)+[\w]+#ui';
+	$domensano=preg_match($domen,$ba,$tabolgandomen);
+	if($domensano==0){
+		header('Content-Type: text/html; charset=utf-8');
+		echo('Дөрес адрес түгел');
 		exit;
 	}
+	*/
+	$pathstart=strpos($ba,'/');
+	$ikinoqtaurono=strpos($ba,':');
+	
+	if($ikinoqtaurono!==false){
+		//x.com:90/
+		if($pathstart!==false){
+			if($ikinoqtaurono<$pathstart){
+				$ba=substr($ba,0,$ikinoqtaurono).substr($ba,$pathstart);
+				$pathstart=strpos($ba,'/');
+			}//else кыскартасы түгел
+		}else{
+			$ba=substr($ba,0,$ikinoqtaurono);
+		}
+	}//else кыскартасы түгел
+	
+	if($pathstart===false){
+		header('Location: http://'. idn_to_ascii(urldecode($ba)). '.'. $til. '.'.TOPDOMEN.'/');
+	}else{
+		$bd=substr($ba,0,$pathstart);
+		$bp=substr($ba,$pathstart);
+		header('Location: http://'. idn_to_ascii(urldecode($bd)). '.'. $til. '.'.TOPDOMEN.$bp);
+	}
+	exit;
 }
 
 
