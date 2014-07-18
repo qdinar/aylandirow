@@ -87,6 +87,17 @@ url:<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" /
 <a href="http://tmf.org.ru/viewtopic.php?f=4&t=95">уртак, гомумән әйләндергеч турында сөйләшү</a><br />
 <br /><?php echo$reklama; ?>
 
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='//www.liveinternet.ru/click;aylandirow' "+
+"target=_blank><img src='//counter.yadro.ru/hit;aylandirow?t52.1;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";h"+escape(document.title.substring(0,80))+";"+Math.random()+
+"' alt='' title='LiveInternet: соңгы 24 сәгатьтәге бит ачу саны"+
+" һәм ачучылар саны күрсәтелгән' "+
+"border='0' width='88' height='31'><\/a>")
+//--></script><!--/LiveInternet-->
 
 
 <td>

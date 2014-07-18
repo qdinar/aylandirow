@@ -67,7 +67,19 @@ $maglumat.
 ).
 $aylandirowwaqoto.'; '.$tw.
 ($kesislay?'<br />Бу бит 5 к&#1257;нг&#1241; кэшланган':'').
-'<br />Бу битне т&#1257;з&#1199; вакыты '.date('Y-m-d H:i:s').'</div>'.
+'<br />Бу битне т&#1257;з&#1199; вакыты '.date('Y-m-d H:i:s').
+'. <!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href=\'//www.liveinternet.ru/click;aylandirow\' "+
+"target=_blank><img src=\'//counter.yadro.ru/hit;aylandirow?t52.1;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";h"+escape(document.title.substring(0,80))+";"+Math.random()+
+"\' alt=\'\' title=\'LiveInternet: соңгы 24 сәгатьтәге бит ачу саны"+
+" һәм ачучылар саны күрсәтелгән\' "+
+"border=\'0\' width=\'88\' height=\'31\'><\/a>")
+//--></script><!--/LiveInternet-->'.
+'</div>'.
 $skript//казак, япон телл&#1241;ренн&#1241;н &#1241;йл&#1241;ндергечл&#1241;рд&#1241; яваскрипт бар
 );
 
