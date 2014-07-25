@@ -70,7 +70,7 @@ url:<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" /
 </select>
 <input type="submit" value="&gt;">
 <br />
-<?php /*if($yuzeradmin){*/ ?><textarea name="inputstr"><?php echo htmlspecialchars($_POST['inputstr']); ?></textarea>
+<?php /*if($yuzeradmin){*/ ?><textarea name="inputstr"><?php //echo htmlspecialchars($_POST['inputstr']); ?>монда текст йә html кодлы текст кертегез</textarea>
 <input type="submit" name="string" value="&gt;"><?php /*}*/ ?>
 </form>
 <br />Мисаллар:<br />

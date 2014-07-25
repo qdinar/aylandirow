@@ -554,7 +554,7 @@ if($til=='kkcysuttcysu-2'){
 		return $s;
 	}
 	$skript='<script src="http://imgs.tmf.org.ru/aylandirow/skript-qazaq.js"></script>';
-	$maglumat='<br /><a href="http://tmf.org.ru/viewtopic.php?f=4&amp;t=85" target="_blank">Казакчадан татарчага әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
+	$forumtemaso='<a href="http://tmf.org.ru/viewtopic.php?f=4&amp;t=85" target="_blank">Казакчадан татарчага әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
 }elseif($til=='uygurdantatarga'){
 	$uygurgarap='اﺍﺎبﺒﺑﺐﺏةﺓﺔتﺘﺗﺕﺖثﺙﺚﺛﺜجﺠﺟﺞﺝحﺡﺢﺣﺤخﺥﺦﺧﺨدﺩﺪذﺫﺬرﺭﺮزﺯﺰ';
 	$tataruros='ааабббббттттттттсссссҗҗҗҗҗххххххххххдддзззрррззз';
@@ -610,7 +610,7 @@ if($til=='kkcysuttcysu-2'){
 	}
 	//$skript='<div style="position:fixed;z-index:32767;top:170px;left:100px;background:#fff;border:1px solid #eee;direction:ltr;text-align:center;cursor:pointer;width:500px;" id="ooo">Соңгы сайланган текстка тәрҗемә тәкъдим итү<span style="border:1px solid #eee;cursor:pointer;padding:2px 5px;float:right;" onclick=\'this.parentNode.style.visibility="hidden";event.stopPropagation();\'>X</span><br /><small>Киңәш: берничә иероглифтан торса, шуны башта җибәрегез, аннары составындагы иероглиф тәрҗемәләрен җибәрегез</small></div>';
 	$skript='<script src="http://imgs.tmf.org.ru/aylandirow/skript1.js"></script>';
-	$maglumat='<br /><a href="http://tmf.org.ru/viewtopic.php?f=4&amp;t=84" target="_blank">Япончадан татарчага әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
+	$forumtemaso='<a href="http://tmf.org.ru/viewtopic.php?f=4&amp;t=84" target="_blank">Япончадан татарчага әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
 }elseif($til=='tatardantatarga'){
 	//include('test.php');
 
@@ -661,7 +661,7 @@ if($til=='kkcysuttcysu-2'){
 	define('ZUR_W','W');
 	include('ttcyttla0.php');*/
 
-	$maglumat='<br /><a href="http://tmf.org.ru/viewtopic.php?f=4&amp;t=87" target="_blank">Татарча кириллицадан ТР 1999ынчы ел законы латин язуына әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
+	$forumtemaso='<a href="http://tmf.org.ru/viewtopic.php?f=4&amp;t=87" target="_blank">Татарча кириллицадан ТР 1999ынчы ел законы латин язуына әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
 }elseif($til=='ttcysuttlart1999'){
 	//include('ttcysuttlart1999.php');
 /*	define('KICI_U','ü');
@@ -709,7 +709,7 @@ if($til=='kkcysuttcysu-2'){
 	define('KICI_W',u('w'));
 	define('ZUR_W',u('W'));
 	include('ttcyttla.php');
-	$maglumat='<br /><a href="http://tmf.org.ru/viewtopic.php?f=4&amp;t=87" target="_blank">Татарча кириллицадан ТР 1999ынчы ел законы латин язуына әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
+	$forumtemaso='<a href="http://tmf.org.ru/viewtopic.php?f=4&amp;t=87" target="_blank">Татарча кириллицадан ТР 1999ынчы ел законы латин язуына әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
 }elseif($til=='ttcysuttlasu'){
 	/*define('KICI_U','y');
 	define('ZUR_U','Y');
@@ -755,7 +755,7 @@ if($til=='kkcysuttcysu-2'){
 	define('KICI_W',u('v'));
 	define('ZUR_W',u('V'));
 	include('ttcyttla.php');
-	$maglumat='<br /><a href="http://tmf.org.ru/viewtopic.php?p=382#p382" target="_blank">Татарча кириллицадан Советлар Союзында 1928енче елны кабул ителгән латин язуына әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
+	$forumtemaso='<a href="http://tmf.org.ru/viewtopic.php?p=382#p382" target="_blank">Татарча кириллицадан Советлар Союзында 1928енче елны кабул ителгән латин язуына әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
 }elseif($til=='ttcysuttlaqdphon'){
 	function aylandir($s){
 		return $s;
