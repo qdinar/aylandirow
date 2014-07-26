@@ -64,7 +64,7 @@ url:<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" /
 <option value="kkcysuttcysu-2" >кирилл язулы казакча язуны татарчалаштыру</option>
 <option value="uygurdantatarga" >гарәп язулы уйгырча язуны кирилл язуына күчерү һәм татарчалаштыру</option>
 <option value="toroktantatarga" >латин язулы төрекчә язуны кирилл язуына күчерү һәм татарчалаштыру</option>
-<option value="yaponnantatarga" >японча язуны татарчага тәрҗемәләү</option>
+<!--option value="yaponnantatarga" >японча язуны татарчага тәрҗемәләү</option-->
 <option value="ttcysuttlart1999" selected="true">татарча язуны кириллицадан ТР 1999ынчы ел законы латин язуына күчерү</option>
 <option value="ttcysuttlasu" >татарча кириллицадан СССРда 1928енче елны кабул ителгән латин язуына</option>
 </select>
@@ -79,11 +79,11 @@ url:<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" /
 <a href="http://kk.wikipedia.org.kkcysuttcysu-2.<?php echo TOPDOMEN; ?>/wiki/%D0%91%D0%B0%D1%81%D1%82%D1%8B_%D0%B1%D0%B5%D1%82">Бер аз хәзерге татар язуына әйләндерелгән <strong>казак</strong> Википедиясы</a><br />
 <a href="http://ug.wikipedia.org.uygurdantatarga.<?php echo TOPDOMEN; ?>/wiki/%D8%A6%DB%87%D9%8A%D8%BA%DB%87%D8%B1%DA%86%DB%95_%DB%8B%D9%89%D9%83%D9%89%D9%BE%D9%89%D8%AF%D9%89%D9%8A%DB%95">Бер аз хәзерге татар язуына әйләндерелгән <strong>уйгыр</strong> Википедиясы</a><br />
 <a href="http://tr.wikipedia.org.toroktantatarga.<?php echo TOPDOMEN; ?>/wiki/Ana_Sayfa">Бер аз хәзерге татар язуына әйләндерелгән <strong>төрек</strong> Википедиясы</a><br />
-<a href="http://ja.wikipedia.org.yaponnantatarga.<?php echo TOPDOMEN; ?>/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">Өлешчә хәзерге татар теленә тәрҗемә ителгән <strong>япон</strong> Википедиясы</a><br />
+<!--a href="http://ja.wikipedia.org.yaponnantatarga.<?php echo TOPDOMEN; ?>/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">Өлешчә хәзерге татар теленә тәрҗемә ителгән <strong>япон</strong> Википедиясы</a><br /-->
 <br />Әйләндергеч <strong>турында сөйләшүләр</strong>:<br />
 <a href="http://tmf.org.ru/viewtopic.php?f=4&t=87">1999ынчы ел проекты татар латин язуына әйләндергеч турында</a><br />
 <a href="http://tmf.org.ru/viewtopic.php?f=4&t=85"><strong>казак</strong> язуын хәзерге татар язуына әйләндергеч турында</a><br />
-<a href="http://tmf.org.ru/viewtopic.php?f=4&t=84"><strong>япон</strong>ча сайтны татар теленә тәрҗемәләгеч турында</a><br />
+<!--a href="http://tmf.org.ru/viewtopic.php?f=4&t=84"><strong>япон</strong>ча сайтны татар теленә тәрҗемәләгеч турында</a><br /-->
 <a href="http://tmf.org.ru/viewtopic.php?f=4&t=95">уртак, гомумән әйләндергеч турында сөйләшү</a><br />
 <br /><?php echo$reklama; ?>
 
