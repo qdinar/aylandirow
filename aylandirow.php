@@ -357,16 +357,44 @@ function yoropcoq($current_node){
 						$jitti=true;
 					}
 				//}elseif(!$jittiammabitmadi){
-				}elseif($kesislay){
+				}elseif($kesislay){ // бу әйләндерү вакыты артык озын булганда әйләндерелгән битне тулысынча файлга саклауны туктату өчен , әмма ул хәзер бөтенләй сүндерелгән
 					if(mb_strlen($current_child->nodeValue)>0){
 						//$jittiammabitmadi=true;
 						$kesislay=false;
 					}
 				}
-
-
-
 			}
+			/*if($current_child->hasAttribute('alt')){ // миндә рәсемнәр сүндерелгән , шул чакта текстлары ямьсез булып чыгып тора
+				//$current_child->getAttribute('title');
+
+				//бу өлеш асттан копияләнде һәм бер аз үзгәртелде
+				if(!$jitti){
+					$tmps=$current_child->getAttribute('alt');
+					if(USECACHE){
+						$tmpsmd5=md5($til.$tmps,true);//моны яңасына күчерәсе
+						//$tmpsmd5=$tmps;//мд5 тән бер аз хужерак
+						$tmpns=apc_fetch($tmpsmd5);
+						//апс кына булып, мин моның белән тикшергән иң зур биттә дә барысы ярты секундка сыеп бетте
+						if($tmpns==false){
+							$tmpns=aylandir($tmps);
+							apc_store($tmpsmd5,$tmpns);
+						}
+						//$current_child->nodeValue=$tmpns;
+					}else{
+						$tmpns=aylandir($tmps);
+					}
+					$current_child->setAttribute('alt',$tmpns);
+					if(microtime(true)-$t1>20){
+						$jitti=true;
+					}
+				//}elseif(!$jittiammabitmadi){
+				}elseif($kesislay){ // бу әйләндерү вакыты артык озын булганда әйләндерелгән битне тулысынча файлга саклауны туктату өчен , әмма ул хәзер бөтенләй сүндерелгән
+					if(mb_strlen($current_child->nodeValue)>0){
+						//$jittiammabitmadi=true;
+						$kesislay=false;
+					}
+				}
+			}*/
 			$current_child_tagname=$current_child->nodeName;
 			if($current_child_tagname=='a'){
 			if($current_child->hasAttribute('href')){
