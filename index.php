@@ -1,22 +1,37 @@
 <?php
-//мин бу алгоритмнан яхшыракны ясап була икәнен беләм, мин андыйны микрософт оффис визуал бейсигы белән ясаган идем, әмма аны югалттым. ул ысул болай: текст буйлап барганда флаг тотарга, анда хәзер калын хәреф тәэсире территорияседәме-юкмы икәнен һәм башкаларны саклайсы.
 $tw1=microtime(true);
-//apc_clear_cache('user');//вапче конвертер үзгәргәч чистартасы
-mb_internal_encoding('UTF-8');
-libxml_use_internal_errors(true);
+
+//config
 define('TOPDOMEN','aylandirow.tmf.org.ru');
+$yuzeradmin=($_SERVER['REMOTE_ADDR']=='78.138.176.205');
+$debug='';
+//$debug.='OK';
 /*if(function_exists('apc_fetch')){
 	define('USECACHE',true);
 }else{
 	define('USECACHE',false);
 }*/
-	define('USECACHE',false);
+define('USECACHE',false);
 
+//мин бу алгоритмнан яхшыракны ясап була икәнен беләм, мин андыйны микрософт оффис визуал бейсигы белән ясаган идем, әмма аны югалттым. ул ысул болай: текст буйлап барганда флаг тотарга, анда хәзер калын хәреф тәэсире территорияседәме-юкмы икәнен һәм башкаларны саклайсы.
+$rohsattil=array(
+	'qazaqtantatarga',
+	'uygurdantatarga',
+	'toroktantatarga',
+	'yaponnantatarga',
+	'tatardantatarga',
+	'kkcysuttcysu-2',
+	'ttcysuttlart1999',
+	'ttcysuttlasu',
+	'ttcysuttlaqdphon',
+	'inglizdantatarga',
+	'ruslat1',
+);
+//apc_clear_cache('user');//вапче конвертер үзгәргәч чистартасы
+mb_internal_encoding('UTF-8');
+libxml_use_internal_errors(true);
 $topdomeno=explode('.',TOPDOMEN);
 $topdomenoo=count($topdomeno);
-$debug='';
-$yuzeradmin=($_SERVER['REMOTE_ADDR']=='78.138.176.205');
-//$debug.='OK';
 //header("HTTP/1.0 404 Not Found");
 //header("Status: 404 Not Found");
 //header('HTTP/1.1 403 Forbidden');
@@ -26,16 +41,159 @@ $ru=$_SERVER['REQUEST_URI'];
 $domain=$_SERVER['HTTP_HOST'];
 $do=explode('.',$domain);//домейн өлешләре
 $doo=count($do);
-if($doo>$topdomenoo){
+if($doo>$topdomenoo){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 	$til=$do[$doo-$topdomenoo-1];
-	if($_SERVER['REQUEST_METHOD']=='POST'&&$ru=='/'){
-		include('post.php');
+	if($doo>5){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
+		$bdo=array_slice($do,0,$doo-$topdomenoo-1);
+		$bd=implode('.',$bdo);
+		$ba=$bd.$ru;
+		//echo($bd);
+		//echo($ba);
+		//exit;
+		if($bd=='www.matbugat.ru'){
+			header('Location: http://matbugat.ru.'.$til.'.'.TOPDOMEN.$ru);
+			exit;
+		}elseif($bd=='www.facebook.com'&&substr($ru,0,17)=='/plugins/like.php'){
+			header('Location: http://www.facebook.com'.$ru);
+			exit;
+		}
+		/*if(//моны яңа файлга күчерәсе
+	$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; AhrefsBot/1.0; +http://ahrefs.com/robot/)'
+		){
+			header('HTTP/1.1 403 Forbidden');
+			exit;
+		}*/
+		if($ru=='/robots.txt'){
+			header('Content-Type: text/plain; charset=utf-8');
+			echo 'User-agent: *
+	Disallow: /';
+			exit;
+		}
+		if(
+	$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'||
+	$_SERVER['HTTP_USER_AGENT']=='Mail.Ru/1.0'||
+	$_SERVER['HTTP_USER_AGENT']=='Damaku'||
+	$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)'||
+	$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; AhrefsBot/1.0; +http://ahrefs.com/robot/)'
+		){
+		//	header('Location: http://aylandirow.tmf.org.ru/robots.txt');
+			header('HTTP/1.1 403 Forbidden');
+			exit;
+		}
+		/*if(    !($til=='ttcysuttlart1999'&&in_array($bd,$ttcysusayt))    ){
+		if($ru=='/robots.txt'){
+			header('Content-Type: text/plain; charset=utf-8');
+			echo 'User-agent: *
+	Disallow: /';
+			exit;
+		}
+		//2011-11-11 16:43 моны комментладым, ботларга ачтым. 16:45 кире ябам, бер бит тә ачылмады әле.
+		//20:22 $til=='ttcysuttlart1999'&&$bd=='matbugat.ru' дән башка
+		//11-12 11:52 gzalilova.narod.ru ны өстәдем.
+		if(
+	$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'||
+	$_SERVER['HTTP_USER_AGENT']=='Mail.Ru/1.0'||
+	$_SERVER['HTTP_USER_AGENT']=='Damaku'||
+	$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)'
+		){
+		//	header('Location: http://aylandirow.tmf.org.ru/robots.txt');
+			header('HTTP/1.1 403 Forbidden');
+			exit;
+		}
+		}//if(!($til=='ttcysuttlart1999'&&$bd=='matbugat.ru'))
+		else{
+		if($ru=='/robots.txt'){//моны яңа файлга күчерәсе
+			header('Content-Type: text/plain; charset=utf-8');
+			echo 'User-agent: *
+	Crawl-delay: 300
+
+	user-agent: AhrefsBot
+	disallow: /
+
+	';
+			exit;
+		}
+		}*/
+	}elseif($doo==5){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
+		if($ru=='/referer'){
+			//echo('123');
+			if(substr($referer,0,7)=='http://'){
+				$ba=substr($referer,7);
+			}elseif(substr($referer,0,8)=='https://'){
+				$ba=substr($referer,8);
+			}else{
+				header('Content-Type: text/html; charset=utf-8');
+				header("HTTP/1.1 404 Not Found");
+				echo('Дөрес реферер күрсәтелмәгән. Бу адресны копияләп куеп ачасы түгел, ә күчкегә басып ачасы, күчке торган бит әйләндерелеп күрсәтелә.');
+				exit;
+			}
+			$pathstart=strpos($ba,'/');
+			if($pathstart===false){
+				header('Location: http://'. $ba. '.'. $til. '.'.TOPDOMEN.'/');
+			}else{
+				$bd=substr($ba,0,$pathstart);
+				$bp=substr($ba,$pathstart);
+				header('Location: http://'. $bd. '.'. $til. '.'.TOPDOMEN.$bp);
+			}
+		}elseif($ru=='/'){
+			for($i=0;$i<count($ttcysusayt);$i++){
+				$au=aylandirilgan_url('http://'.$ttcysusayt[$i]);
+				echo"<a href=\"$au\" target=\"_blank\">{$ttcysusayt[$i]}</a> ";
+			}
+		}
 		exit;
 	}
-}else{
+}
+elseif($doo==$topdomenoo){//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 	if($ru=='/'){
 		if(!isset($_POST['inputstr'])||$_POST['inputstr']==''){
 			include 'topbit.php';
+		}elseif(isset($_POST['ba'])){
+			$til=$_POST['yunalis'];
+			$ba=$_POST['ba'];
+			if(substr($ba,0,7)=='http://'){
+				$ba=substr($ba,7);
+			}else if(substr($ba,0,8)=='https://'){
+				$ba=substr($ba,8);
+			/*
+			}else if(substr($ba,0,6)=='ftp://'){
+				header('Content-Type: text/html; charset=utf-8');
+				echo('фтпны әйләндермәй!');
+				exit;
+			*/
+			}
+			/*
+			$domen='#^([\w\-]+\.)+[\w]+#ui';
+			$domensano=preg_match($domen,$ba,$tabolgandomen);
+			if($domensano==0){
+				header('Content-Type: text/html; charset=utf-8');
+				echo('Дөрес адрес түгел');
+				exit;
+			}
+			*/
+			$pathstart=strpos($ba,'/');
+			$ikinoqtaurono=strpos($ba,':');
+			
+			if($ikinoqtaurono!==false){
+				//x.com:90/
+				if($pathstart!==false){
+					if($ikinoqtaurono<$pathstart){
+						$ba=substr($ba,0,$ikinoqtaurono).substr($ba,$pathstart);
+						$pathstart=strpos($ba,'/');
+					}//else кыскартасы түгел
+				}else{
+					$ba=substr($ba,0,$ikinoqtaurono);
+				}
+			}//else кыскартасы түгел
+			
+			if($pathstart===false){
+				header('Location: http://'. idn_to_ascii(urldecode($ba)). '.'. $til. '.'.TOPDOMEN.'/');
+			}else{
+				$bd=substr($ba,0,$pathstart);
+				$bp=substr($ba,$pathstart);
+				header('Location: http://'. idn_to_ascii(urldecode($bd)). '.'. $til. '.'.TOPDOMEN.$bp);
+			}
+			exit;
 		}else{
 			$ic=$_POST['inputstr'];
 			$ic='<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'.$ic;
@@ -48,18 +206,7 @@ if($doo>$topdomenoo){
 	}
 	$til=mb_substr($ru,1,15);
 }
-$rohsattil=array(
-	'qazaqtantatarga',
-	'uygurdantatarga',
-	'toroktantatarga',
-	'yaponnantatarga',
-	'tatardantatarga',
-	'kkcysuttcysu-2',
-	'ttcysuttlart1999',
-	'ttcysuttlasu',
-	'ttcysuttlaqdphon',
-	'inglizdantatarga',
-);
+
 if(
 	in_array($til,$rohsattil)
 ){
@@ -147,125 +294,18 @@ function aylandirilgan_url($h){//http:// белән генә дөрес эшли
 }
 
 
-if($doo>5){
-	$bdo=array_slice($do,0,$doo-$topdomenoo-1);
-	$bd=implode('.',$bdo);
-	$ba=$bd.$ru;
-	//echo($bd);
-	//echo($ba);
+//else{//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
+	// $ba=mb_substr($ru,17);//барасы адрес
+	// $pathstart=strpos($ba,'/');
+	// if($pathstart===false){
+		// header('Location: http://'. $ba. '.'. $til. '.'.TOPDOMEN.'/');
+	// }else{
+		// $bd=substr($ba,0,$pathstart);
+		// $bp=substr($ba,$pathstart);
+		// header('Location: http://'. $bd. '.'. $til. '.'.TOPDOMEN.$bp);
+	// }
 	//exit;
-	if($bd=='www.matbugat.ru'){
-		header('Location: http://matbugat.ru.'.$til.'.'.TOPDOMEN.$ru);
-		exit;
-	}elseif($bd=='www.facebook.com'&&substr($ru,0,17)=='/plugins/like.php'){
-		header('Location: http://www.facebook.com'.$ru);
-		exit;
-	}
-	/*if(//моны яңа файлга күчерәсе
-$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; AhrefsBot/1.0; +http://ahrefs.com/robot/)'
-	){
-		header('HTTP/1.1 403 Forbidden');
-		exit;
-	}*/
-	if($ru=='/robots.txt'){
-		header('Content-Type: text/plain; charset=utf-8');
-		echo 'User-agent: *
-Disallow: /';
-		exit;
-	}
-	if(
-$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'||
-$_SERVER['HTTP_USER_AGENT']=='Mail.Ru/1.0'||
-$_SERVER['HTTP_USER_AGENT']=='Damaku'||
-$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)'||
-$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; AhrefsBot/1.0; +http://ahrefs.com/robot/)'
-	){
-	//	header('Location: http://aylandirow.tmf.org.ru/robots.txt');
-		header('HTTP/1.1 403 Forbidden');
-		exit;
-	}
-	/*if(    !($til=='ttcysuttlart1999'&&in_array($bd,$ttcysusayt))    ){
-	if($ru=='/robots.txt'){
-		header('Content-Type: text/plain; charset=utf-8');
-		echo 'User-agent: *
-Disallow: /';
-		exit;
-	}
-	//2011-11-11 16:43 моны комментладым, ботларга ачтым. 16:45 кире ябам, бер бит тә ачылмады әле.
-	//20:22 $til=='ttcysuttlart1999'&&$bd=='matbugat.ru' дән башка
-	//11-12 11:52 gzalilova.narod.ru ны өстәдем.
-	if(
-$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'||
-$_SERVER['HTTP_USER_AGENT']=='Mail.Ru/1.0'||
-$_SERVER['HTTP_USER_AGENT']=='Damaku'||
-$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)'
-	){
-	//	header('Location: http://aylandirow.tmf.org.ru/robots.txt');
-		header('HTTP/1.1 403 Forbidden');
-		exit;
-	}
-	}//if(!($til=='ttcysuttlart1999'&&$bd=='matbugat.ru'))
-	else{
-	if($ru=='/robots.txt'){//моны яңа файлга күчерәсе
-		header('Content-Type: text/plain; charset=utf-8');
-		echo 'User-agent: *
-Crawl-delay: 300
-
-user-agent: AhrefsBot
-disallow: /
-
-';
-		exit;
-	}
-	}*/
-}elseif($doo>4){
-	if($ru=='/referer'){
-		//echo('123');
-		if(substr($referer,0,7)=='http://'){
-			$ba=substr($referer,7);
-		}elseif(substr($referer,0,8)=='https://'){
-			$ba=substr($referer,8);
-		}else{
-			header('Content-Type: text/html; charset=utf-8');
-			header("HTTP/1.1 404 Not Found");
-			echo('Дөрес реферер күрсәтелмәгән. Бу адресны копияләп куеп ачасы түгел, ә күчкегә басып ачасы, күчке торган бит әйләндерелеп күрсәтелә.');
-			exit;
-		}
-		$pathstart=strpos($ba,'/');
-		if($pathstart===false){
-			header('Location: http://'. $ba. '.'. $til. '.'.TOPDOMEN.'/');
-		}else{
-			$bd=substr($ba,0,$pathstart);
-			$bp=substr($ba,$pathstart);
-			header('Location: http://'. $bd. '.'. $til. '.'.TOPDOMEN.$bp);
-		}
-	}elseif($ru=='/'){
-		for($i=0;$i<count($ttcysusayt);$i++){
-			$au=aylandirilgan_url('http://'.$ttcysusayt[$i]);
-			echo"<a href=\"$au\" target=\"_blank\">{$ttcysusayt[$i]}</a> ";
-		}
-	}
-	exit;
-}else{
-	$ba=mb_substr($ru,17);//барасы адрес
-	/*
-	if(preg_match('#^([\w\-]+\.)+[\w]+$#ui',$ba)==1){
-	//	echo 'ok';
-		header('Location: http://aylandirow.tmf.org.ru/'.$til.'/'.$ba.'/');
-		exit;
-	}
-	*/
-	
-	$pathstart=strpos($ba,'/');
-	if($pathstart===false){
-		header('Location: http://'. $ba. '.'. $til. '.'.TOPDOMEN.'/');
-	}else{
-		$bd=substr($ba,0,$pathstart);
-		$bp=substr($ba,$pathstart);
-		header('Location: http://'. $bd. '.'. $til. '.'.TOPDOMEN.$bp);
-	}
-	exit;
-}
+//}
 
 if($til=='qazaqtantatarga'){
 	header('Location: http://'. $bd. '.kkcysuttcysu-2.'.TOPDOMEN.$ru);
@@ -328,9 +368,14 @@ function aylandirgicwaqoto(){
 	}elseif($til=='ttcysuttlart1999'||$til=='ttcysuttlasu'){
 		//$clmt=max($clmt,filemtime('ttcysuttlart1999.php'));
 		$clmt=max($clmt,filemtime('ttcyttla.php'));//,filemtime('ttcyttla-k.php'),filemtime('ttcyttla-g.php'),filemtime('ttcyttla-yeyuya.php')
-	}elseif($til=='tatardantatarga'){
+	}
+	elseif($til=='tatardantatarga'){
 		//$clmt=max($clmt,filemtime('test.php'));
 		$clmt=max($clmt,filemtime('ttcyttla4.php'));
+	}
+	elseif($til=='ruslat1'){
+		//$clmt=max($clmt,filemtime('test.php'));
+		$clmt=max($clmt,filemtime('ruslat.php'));
 	}
 	return $clmt;
 	

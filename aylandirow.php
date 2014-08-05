@@ -792,6 +792,8 @@ if($til=='kkcysuttcysu-2'){
 	function aylandir($s){
 		return $s;
 	}
+}elseif($til=='ruslat1'){
+	include 'ruslat.php';
 }
 
 //echo'OK';exit;

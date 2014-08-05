@@ -1,53 +1,6 @@
 <?php
 
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
-	$til=$_POST['yunalis'];
-	$ba=$_POST['ba'];
-	if(substr($ba,0,7)=='http://'){
-		$ba=substr($ba,7);
-	}else if(substr($ba,0,8)=='https://'){
-		$ba=substr($ba,8);
-	/*
-	}else if(substr($ba,0,6)=='ftp://'){
-		header('Content-Type: text/html; charset=utf-8');
-		echo('фтпны әйләндермәй!');
-		exit;
-	*/
-	}
-	/*
-	$domen='#^([\w\-]+\.)+[\w]+#ui';
-	$domensano=preg_match($domen,$ba,$tabolgandomen);
-	if($domensano==0){
-		header('Content-Type: text/html; charset=utf-8');
-		echo('Дөрес адрес түгел');
-		exit;
-	}
-	*/
-	$pathstart=strpos($ba,'/');
-	$ikinoqtaurono=strpos($ba,':');
-	
-	if($ikinoqtaurono!==false){
-		//x.com:90/
-		if($pathstart!==false){
-			if($ikinoqtaurono<$pathstart){
-				$ba=substr($ba,0,$ikinoqtaurono).substr($ba,$pathstart);
-				$pathstart=strpos($ba,'/');
-			}//else кыскартасы түгел
-		}else{
-			$ba=substr($ba,0,$ikinoqtaurono);
-		}
-	}//else кыскартасы түгел
-	
-	if($pathstart===false){
-		header('Location: http://'. idn_to_ascii(urldecode($ba)). '.'. $til. '.'.TOPDOMEN.'/');
-	}else{
-		$bd=substr($ba,0,$pathstart);
-		$bp=substr($ba,$pathstart);
-		header('Location: http://'. idn_to_ascii(urldecode($bd)). '.'. $til. '.'.TOPDOMEN.$bp);
-	}
-	exit;
-}
 
 
 header('Content-Type: text/html; charset=utf-8');
@@ -59,7 +12,6 @@ header('Content-Type: text/html; charset=utf-8');
 <tr>
 <td style="vertical-align:middle;text-align:center;">
 <form method="POST" style="margin:0px;">
-url:<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" /><br />
 <select name="yunalis">
 <option value="kkcysuttcysu-2" >кирилл язулы казакча язуны татарчалаштыру</option>
 <option value="uygurdantatarga" >гарәп язулы уйгырча язуны кирилл язуына күчерү һәм татарчалаштыру</option>
@@ -67,7 +19,8 @@ url:<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" /
 <!--option value="yaponnantatarga" >японча язуны татарчага тәрҗемәләү</option-->
 <option value="ttcysuttlart1999" selected="true">татарча язуны кириллицадан ТР 1999ынчы ел законы латин язуына күчерү</option>
 <option value="ttcysuttlasu" >татарча кириллицадан СССРда 1928енче елны кабул ителгән латин язуына</option>
-</select>
+</select><br />
+url:(http://)<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" />
 <input type="submit" value="&gt;">
 <br />
 <?php /*if($yuzeradmin){*/ ?><textarea name="inputstr"><?php //echo htmlspecialchars($_POST['inputstr']); ?>монда текст йә html кодлы текст кертегез</textarea>
