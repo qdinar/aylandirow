@@ -1,5 +1,5 @@
 <?php
-$tw1=microtime(true);
+//$tw1=microtime(true);
 
 //config
 define('TOPDOMEN','aylandirow.tmf.org.ru');
@@ -25,7 +25,9 @@ $rohsattil=array(
 	'ttcysuttlasu',
 	'ttcysuttlaqdphon',
 	'inglizdantatarga',
-	'ruslat1',
+	'cyrlatiso9a',
+	'cyrlatyandex',
+	'ttcyrf',
 );
 //apc_clear_cache('user');//вапче конвертер үзгәргәч чистартасы
 mb_internal_encoding('UTF-8');
@@ -237,62 +239,7 @@ $ttcysusayt=array('matbugat.ru','gzalilova.narod.ru','belem.ru','beznen.ru','www
 'adiplar.narod.ru'
 );
 
-
-function aylandirilgan_url($h){//http:// белән генә дөрес эшли!!
-	//global $til,$doo;
-	global $til,$debug;
-	//$debug.=$h;
-	//if($doo>4){
-	$h=substr($h,7);
-	$ikinoqtaurono=strpos($h,':');
-	$pathstart=strpos($h,'/');
-	
-	if($ikinoqtaurono!==false){//ике нокта кайдадыр бар
-		//x.com:90/
-		if($pathstart!==false){//слеш бар
-			if($ikinoqtaurono<$pathstart){//ике нокта портныкы
-				if( substr($h,$ikinoqtaurono+1,$pathstart-$ikinoqtaurono-1)=='80' ){
-					$h=substr($h,0,$ikinoqtaurono).substr($h,$pathstart);
-					$pathstart=strpos($h,'/');
-					//80енче порт күрсәтелмәгән иттерелде
-				}else{//ниндидер башка порт күрсәтелгән, әйләндермим
-					return 'http://'. $h;
-				}
-			}//else ике нокта портныкы түгел, проблема юк
-		}else{//слеш юк, ә ике нокта бар, ул портныкы
-			if( substr($h,$ikinoqtaurono+1)=='80' ){
-				$h=substr($h,0,$ikinoqtaurono);
-				//80енче порт күрсәтелмәгән иттерелде
-			}else{//ниндидер башка порт күрсәтелгән, әйләндермим
-				return 'http://'. $h;
-			}
-		}
-	}//else ике нокта бөтенләй юк, проблема юк
-	
-	if($pathstart===false){
-		$hd=$h;
-	}else{
-		$hd=substr($h,0,$pathstart);
-	}
-	//$debug.=substr($hd,-22);
-	//$debug.=$hd;
-	//$debug.=$h;
-	if(substr($hd,-22)=='.'.TOPDOMEN){
-		return 'http://'. $h;
-	}
-	
-	if($pathstart===false){
-		return 'http://'. $h. '.'. $til. '.'.TOPDOMEN.'/';
-	}else{
-		//$hd=substr($h,0,$pathstart);
-		$hp=substr($h,$pathstart);
-		return 'http://'. $hd. '.'. $til. '.'.TOPDOMEN.$hp;
-	}
-	//}else{
-	//	return 'http://aylandirow.tmf.org.ru/'.$til.'/'.substr($h,7);
-	//}
-}
-
+include('aylandirilgan_url.php');
 
 //else{//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 	// $ba=mb_substr($ru,17);//барасы адрес
@@ -376,6 +323,9 @@ function aylandirgicwaqoto(){
 	elseif($til=='ruslat1'){
 		//$clmt=max($clmt,filemtime('test.php'));
 		$clmt=max($clmt,filemtime('ruslat.php'));
+	}
+	elseif($til=='ttcyrf'){
+		$clmt=max($clmt,filemtime('ttcyrf.php'));
 	}
 	return $clmt;
 	

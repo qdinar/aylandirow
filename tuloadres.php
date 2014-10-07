@@ -1,4 +1,11 @@
 <?php
+if(!function_exists('idn_to_ascii')){
+	include_once("punycode.class.php");
+	function idn_to_ascii($dom){
+		return Punycode::encodeHostname($dom);
+	}
+}
+
 //function url_to_absolute($hazirgiadres,$barasoadres){
 function tuloadres($hazirgiadres,$barasoadres){
 	global $debug;

@@ -1,5 +1,5 @@
 <?php
-
+$skript='';
 
 
 
@@ -548,6 +548,9 @@ function yoropcoq($current_node){
 //echo$tw;exit;
 
 
+function u($s){
+	return mb_convert_encoding($s,'ucs2','utf8');
+}
 //if($til=='qazaqtantatarga'){
 if($til=='kkcysuttcysu-2'){
 	include('qazaqtantatarga-yevropa.php');
@@ -642,9 +645,6 @@ if($til=='kkcysuttcysu-2'){
 }elseif($til=='tatardantatarga'){
 	//include('test.php');
 
-	function u($s){
-		return mb_convert_encoding($s,'ucs2','utf8');
-	}
 	define('KICI_U',u('ü'));
 	define('ZUR_U',u('Ü'));
 	define('KICI_Y',u('y'));
@@ -713,9 +713,6 @@ if($til=='kkcysuttcysu-2'){
 	define('KICI_W','w');
 	define('ZUR_W','W');
 */
-	function u($s){
-		return mb_convert_encoding($s,'ucs2','utf8');
-	}
 	define('KICI_U',u('ü'));
 	define('ZUR_U',u('Ü'));
 	define('KICI_Y',u('y'));
@@ -759,9 +756,6 @@ if($til=='kkcysuttcysu-2'){
 	define('ZUR_Ж','Ƶ');
 	define('KICI_W','v');
 	define('ZUR_W','V');*/
-	function u($s){
-		return mb_convert_encoding($s,'ucs2','utf8');
-	}
 	define('KICI_U',u('y'));
 	define('ZUR_U',u('Y'));
 	define('KICI_Y',u('j'));
@@ -784,6 +778,7 @@ if($til=='kkcysuttcysu-2'){
 	define('ZUR_W',u('V'));
 	include('ttcyttla.php');
 	$forumtemaso='<a href="http://tmf.org.ru/viewtopic.php?p=382#p382" target="_blank">Татарча кириллицадан Советлар Союзында 1928енче елны кабул ителгән латин язуына әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
+/*
 }elseif($til=='ttcysuttlaqdphon'){
 	function aylandir($s){
 		return $s;
@@ -792,9 +787,82 @@ if($til=='kkcysuttcysu-2'){
 	function aylandir($s){
 		return $s;
 	}
-}elseif($til=='ruslat1'){
-	include 'ruslat.php';
+*/
+}elseif($til=='cyrlatiso9a'){
+	//include 'cyrlatiso9.php';
+	$cyr='абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
+	$lat='abvgdeëžzijklmnoprstufhcčšŝʺyʹèûâABVGDEËŽZIJKLMNOPRSTUFHCČŠŜʺYʹÈÛÂ';
+	$cyr=preg_split('//u',$cyr);
+	$lat=preg_split('//u',$lat);
+	$cyr=array_splice($cyr,1,count($cyr)-2);
+	$lat=array_splice($lat,1,count($lat)-2);
+	function aylandir($s){
+		global $cyr,$lat;
+		return str_replace($cyr,$lat,$s);
+	}
 }
+elseif($til=='cyrlatyandex'){
+	//include 'cyrlatiso9.php';
+	$cyr='абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
+	$lat='abvgdeežzijklmnoprstufhcčšŝʺyʹèûâABVGDEËŽZIJKLMNOPRSTUFHCČŠŜʺYʹÈÛÂ';
+	$cyr=preg_split('//u',$cyr);
+	$lat=preg_split('//u',$lat);
+	$cyr=array_splice($cyr,1,count($cyr)-2);
+	$lat=array_splice($lat,1,count($lat)-2);
+	$lat[7]='zh';$lat[7+33]='ZH';
+	$lat[22]='kh';$lat[22+33]='KH';
+	$lat[24]='ch';$lat[24+33]='CH';
+	$lat[25]='sh';$lat[25+33]='SH';
+	$lat[26]='shh';$lat[26+33]='SHH';
+	$lat[27]='';$lat[27+33]='';
+	$lat[29]='';$lat[29+33]='';
+	$lat[30]='e';$lat[30+33]='E';
+	$lat[31]='ju';$lat[31+33]='Ju';
+	$lat[32]='ja';$lat[32+33]='Ja';
+	function aylandir($s){
+		global $cyr,$lat;
+		return str_replace($cyr,$lat,$s);
+	}
+}
+elseif($til=='ttcyrf'){
+	/*
+	$cyr[]='/[ьъ]я/u';$lat[]='йа';
+	$cyr[]='/[ьъ]ю/u';$lat[]='йу';
+	$cyr[]='/[ьъ]е/u';$lat[]='йе';
+	//аеуиыөәүюяёэ
+	$cyr[]='/([ауыёэ])я/u';$lat[]='$1йа';
+	$cyr[]='/([ауыёэ])ю/u';$lat[]='$1йу';
+	//$cyr[]='/([ауыёэ])ё/u';$lat[]='$1йо';
+	$cyr[]='/([бвджзйклмнпрстфхцчшщ])([ауыёэ])е/u';$lat[]='$1$2йы';
+	$cyr[]='/([гк])(а)е/u';$lat[]='$1әйе';
+	//$cyr[]='/([гк])(у)е/u';$lat[]='$1үйе';
+	//$cyr[]='/([гк])(ы)е/u';$lat[]='$1ейе';
+	$cyr[]='/а([бвгджҗзйклмнңпрстфхһцчшщ])ь/u';$lat[]='ә$1';
+	//$cyr[]='/га/u';$lat[]='ғә';
+	//$cyr[]='/ка/u';$lat[]='ҡә';
+	// $cyr[]='/я/u';$lat[]='йа';
+	// $cyr[]='/Я/u';$lat[]='Йа';
+	// $cyr[]='/ю/u';$lat[]='йу';
+	// $cyr[]='/Ю/u';$lat[]='Йу';
+	// $cyr[]='/^Е/u';$lat[]='Йе';
+	$cyr[]='/ь(и)/u';$lat[]='й$1';
+	function aylandir($s){
+		global $cyr,$lat;
+		return preg_replace($cyr,$lat,$s);
+		
+		// $so=mb_strlen($s);
+		// $i=0;$h='';$ns='';
+		// while($i<$so){
+			// $h=mb_substr($s,$i,1);
+			// $i++;
+		// }
+		
+	}
+	*/
+	include('ttcyrf.php');
+}
+
+
 
 //echo'OK';exit;
 //if($yuzeradmin){echo $d->saveHTML() ;exit;}
@@ -867,10 +935,12 @@ if($e->length==0){
 //	}
 //}
 */
-if($kesislay||!USECACHE||!apc_fetch($ba)){//тулы битне кешлау эшләсә - игланны бөтен фреймнарда күрсәтәсе.
-//апс бөтенләй булмаса да игланны күрсәтәсе.
-//адрес кешга язып куелмаган булса, игланны күрсәтәсе, кешга язылган ул - ифрейм адресы
-	include('iglan.php');
+if($_SERVER['HTTP_HOST']!='localhost'){
+	if($kesislay||!USECACHE||!apc_fetch($ba)){//тулы битне кешлау эшләсә - игланны бөтен фреймнарда күрсәтәсе.
+	//апс бөтенләй булмаса да игланны күрсәтәсе.
+	//адрес кешга язып куелмаган булса, игланны күрсәтәсе, кешга язылган ул - ифрейм адресы
+		include('iglan.php');
+	}
 }
 //include('iglan.php');
 

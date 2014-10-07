@@ -1,3 +1,6 @@
 RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 RewriteRule .* index.php
 Deny from 85.17.73.171
