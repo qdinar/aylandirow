@@ -19,9 +19,11 @@ header('Content-Type: text/html; charset=utf-8');
 <!--option value="yaponnantatarga" >японча язуны татарчага тәрҗемәләү</option-->
 <option value="ttcysuttlart1999" selected="true">татарча язуны кириллицадан ТР 1999ынчы ел законы латин язуына күчерү</option>
 <option value="ttcysuttlasu" >татарча кириллицадан СССРда 1928енче елны кабул ителгән латин язуына</option>
+<option value="cyrlatiso9a" >транслитерация русского текста по iso9a</option>
+<option value="cyrlatyandex" >транслитерация русского текста по транслитерация.рф "по яндексу"</option>
 </select><br />
 url:(http://)<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" />
-<input type="submit" value="&gt;">
+<input type="submit" value="&gt;" name="url">
 <br />
 <?php /*if($yuzeradmin){*/ ?><textarea name="inputstr"><?php //echo htmlspecialchars($_POST['inputstr']); ?>монда текст йә html кодлы текст кертегез</textarea>
 <input type="submit" name="string" value="&gt;"><?php /*}*/ ?>

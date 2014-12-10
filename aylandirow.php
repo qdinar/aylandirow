@@ -802,6 +802,7 @@ if($til=='kkcysuttcysu-2'){
 	}
 }
 elseif($til=='cyrlatyandex'){
+	//http://транслитерация.рф/
 	//include 'cyrlatiso9.php';
 	$cyr='абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
 	$lat='abvgdeežzijklmnoprstufhcčšŝʺyʹèûâABVGDEËŽZIJKLMNOPRSTUFHCČŠŜʺYʹÈÛÂ';

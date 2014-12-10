@@ -148,9 +148,11 @@ if($doo>$topdomenoo){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 }
 elseif($doo==$topdomenoo){//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 	if($ru=='/'){
-		if(!isset($_POST['inputstr'])||$_POST['inputstr']==''){
-			include 'topbit.php';
-		}elseif(isset($_POST['ba'])){
+		// if(!isset($_POST['inputstr'])||$_POST['inputstr']==''){
+			// include 'topbit.php';
+		// }else
+		// if(isset($_POST['ba'])){
+		if(isset($_POST['url'])){
 			$til=$_POST['yunalis'];
 			$ba=$_POST['ba'];
 			if(substr($ba,0,7)=='http://'){
@@ -196,13 +198,16 @@ elseif($doo==$topdomenoo){//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 				header('Location: http://'. idn_to_ascii(urldecode($bd)). '.'. $til. '.'.TOPDOMEN.$bp);
 			}
 			exit;
-		}else{
+		//}else{
+		}elseif(isset($_POST['string'])){
 			$ic=$_POST['inputstr'];
 			$ic='<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'.$ic;
 			$til=$_POST['yunalis'];
 			include('aylandirow.php');
 			header('Content-Type: text/html; charset=utf-8');
 			echo($ic);
+		}else{
+			include 'topbit.php';
 		}
 		exit;
 	}
@@ -228,6 +233,11 @@ if(
 	//echo($til);
 	//echo($doo);
 	exit;
+}
+if($til=='cyrlatiso9a'||$til=='cyrlatyandex'){
+	$rus=true;
+}else{
+	$rus=false;
 }
 /*
 if($til=='tatardantatarga'){
@@ -320,10 +330,10 @@ function aylandirgicwaqoto(){
 		//$clmt=max($clmt,filemtime('test.php'));
 		$clmt=max($clmt,filemtime('ttcyttla4.php'));
 	}
-	elseif($til=='ruslat1'){
+	//elseif($til=='ruslat1'){
 		//$clmt=max($clmt,filemtime('test.php'));
-		$clmt=max($clmt,filemtime('ruslat.php'));
-	}
+		//$clmt=max($clmt,filemtime('ruslat.php'));
+	//}
 	elseif($til=='ttcyrf'){
 		$clmt=max($clmt,filemtime('ttcyrf.php'));
 	}

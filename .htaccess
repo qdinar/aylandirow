@@ -4,3 +4,32 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 RewriteRule .* index.php
 Deny from 85.17.73.171
+deny from 109.120.163
+deny from 109.120.178.215
+deny from 92.243.68.58
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

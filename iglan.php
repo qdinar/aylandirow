@@ -2,11 +2,12 @@
 
 $tw='';
 
-$reklama='Реклама: <a href="http://qdinar.wp.kukmara-rayon.ru" target="_blank">Бу &#1241;йл&#1241;ндергеч авторыны&#1187; ш&#1241;хси сайты</a>.<br />
-'
-//.'<a href="http://tmf.org.ru/perevesti_yge/?t=tt" target="_blank">БДИны (Россияк&#1199;л&#1241;м) к&#1199;птелл&#1241;штер&#1199; &#1257;чен тавыш &#1175;ыю</a><br />
-//'
-;
+if($rus){
+	$reklama='Реклама: <a href="http://dinarkurbanov.wp.kukmara-rayon.ru" target="_blank">Личный сайт автора этого транслитератора</a>.<br />';
+}else{
+	$reklama='Реклама: <a href="http://qdinar.wp.kukmara-rayon.ru" target="_blank">Бу &#1241;йл&#1241;ндергеч авторыны&#1187; ш&#1241;хси сайты</a>.<br />';
+}
+//.'<a href="http://tmf.org.ru/perevesti_yge/?t=tt" target="_blank">БДИны (Россияк&#1199;л&#1241;м) к&#1199;птелл&#1241;штер&#1199; &#1257;чен тавыш &#1175;ыю</a><br />'
 
 /*
 $iglan=$d->createElement('div');
@@ -23,7 +24,11 @@ $iglan=$d->createDocumentFragment();
 //if($bd=='qdb.tmf.org.ru'){
 //	$nomessage='<script>alert(parent.location);</script>';
 //}
-$maglumat='Мәгълүмат: ';
+if($rus){
+	$maglumat='Информация: ';
+}else{
+	$maglumat='Мәгълүмат: ';
+}
 if($til=='ttcysuttlart1999'||$til=='ttcysuttlasu'){
 $maglumat.=$forumtemaso.'.<br />';
 if(!$kesislay){
@@ -40,20 +45,28 @@ $maglumat.='Латин язуы төре: <select name="yunalis">
 </form>'
 ;
 }
-$maglumat.='<a href="http://qdinar.wp.kukmara-rayon.ru/2012/12/15/sayt-teksto-aylandirgicni-tulosonca-actom/" target="_blank">
-бу &#1241;йл&#1241;ндергеч кодын тулысынча гпл3 р&#1257;хс&#1241;те бел&#1241;н ачтым</a>.<br />
-';
-$maglumat.='Бит &#1241;йл&#1241;ндерелеп бетм&#1241;с&#1241;, я&#1187;артып карагыз<br />';
+if($rus){
+	$maglumat.='<a href="http://qdinar.wp.kukmara-rayon.ru/2012/12/15/sayt-teksto-aylandirgicni-tulosonca-actom/" target="_blank">
+	Я открыл код этого транслитератора с лицензией GPL3</a>.<br />
+	';
+}else{
+	$maglumat.='<a href="http://qdinar.wp.kukmara-rayon.ru/2012/12/15/sayt-teksto-aylandirgicni-tulosonca-actom/" target="_blank">
+	бу &#1241;йл&#1241;ндергеч кодын тулысынча гпл3 р&#1257;хс&#1241;те бел&#1241;н ачтым</a>.<br />
+	';
+	$maglumat.='Бит &#1241;йл&#1241;ндерелеп бетм&#1241;с&#1241;, я&#1187;артып карагыз<br />';
+}
 $iglan->appendXML('<div style="position:fixed;z-index:32767;top:70px;left:100px;background:#fff;border:1px solid #eee;direction:ltr;text-align:center;width:700px;font-size:10pt;">
-<span style="border:1px solid #eee;cursor:pointer;padding:2px 5px;float:left;" onclick=\'this.parentNode.style.visibility="hidden";\'>X</span>
-Бу <a href="http://'.TOPDOMEN.'/">'.TOPDOMEN.'</a> &#1199;зг&#1241;ртеп к&#1199;рс&#1241;тк&#1241;н '.
-(isset($ba)?'<a href="'.str_replace('&','&amp;',$ba).'" target="_blank" id="conadres">сайт</a>':'текст').'!
-<span style="border:1px solid #eee;cursor:pointer;padding:2px 5px;float:right;" onclick=\'this.parentNode.style.visibility="hidden";\'>X</span><br />
-Бу &#1241;йл&#1241;ндергеч аркылы сайтларга язып булмый.<br />'."\n".
+<span style="border:1px solid #eee;cursor:pointer;padding:2px 5px;float:left;" onclick=\'this.parentNode.style.visibility="hidden";\'>X</span>'.
+($rus?('Это '.(isset($ba)?'<a href="'.str_replace('&','&amp;',$ba).'" target="_blank" id="conadres">сайт</a>':'текст').' изменённый <a href="http://'.TOPDOMEN.'/">'.TOPDOMEN.'</a>'):('Бу <a href="http://'.TOPDOMEN.'/">'.TOPDOMEN.'</a> &#1199;зг&#1241;ртеп к&#1199;рс&#1241;тк&#1241;н '.(isset($ba)?'<a href="'.str_replace('&','&amp;',$ba).'" target="_blank" id="conadres">сайт</a>':'текст'))).
+'!
+<span style="border:1px solid #eee;cursor:pointer;padding:2px 5px;float:right;" onclick=\'this.parentNode.style.visibility="hidden";\'>X</span><br />'.
+($rus?'Через этот сайт нельзя постить в сайты.':'Бу &#1241;йл&#1241;ндергеч аркылы сайтларга язып булмый.<br />').
+"\n".
 //(isset($ba)?'<a href="'.str_replace('&','&amp;',$ba).'" target="_blank" id="conadres">Чын адресына к&#1199;ч&#1199;</a><br />':'').
 //(($til=='ttcysuttlart1999'||$til=='ttcysuttlasu')?('<a href="http://qdinar.wp.kukmara-rayon.ru/2012/03/19/latinlastorgoc-funktsiyani-satam/" target="_blank">Бу латинлаштыргыч php функциясен барча халыкка 1000 сумга сатмакчымын</a><br/>'):'').
 '<br />'.$reklama
-.'Монда сезне&#1187; реклама була ала.<br /><br />'.
+.($rus?'Здесь может быть ваша реклама.':'Монда сезне&#1187; реклама була ала.')
+.'<br /><br />'.
 $maglumat.
 (
 	(
@@ -70,7 +83,7 @@ $maglumat.
 ).
 $aylandirowwaqoto.'; '.$tw.
 ($kesislay?'<br />Бу бит 5 к&#1257;нг&#1241; кэшланган':'').
-'<br />Бу битне т&#1257;з&#1199; вакыты '.date('Y-m-d H:i:s').
+'<br />'.($rus?'Время транслитерирования этой страницы':'Бу битне т&#1257;з&#1199; вакыты ').date('Y-m-d H:i:s').
 '. <!--LiveInternet counter--><script type="text/javascript"><!--
 document.write("<a href=\'//www.liveinternet.ru/click;aylandirow\' "+
 "target=_blank><img src=\'//counter.yadro.ru/hit;aylandirow?t52.1;r"+
@@ -78,8 +91,9 @@ escape(document.referrer)+((typeof(screen)=="undefined")?"":
 ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
 screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 ";h"+escape(document.title.substring(0,80))+";"+Math.random()+
-"\' alt=\'\' title=\'LiveInternet: соңгы 24 сәгатьтәге бит ачу саны"+
-" һәм ачучылар саны күрсәтелгән\' "+
+"\' alt=\'\' title=\'LiveInternet: '.($rus?'показано число просмотров и"+
+" посетителей за 24 часа':'соңгы 24 сәгатьтәге бит ачу саны"+
+" һәм ачучылар саны күрсәтелгән').'\' "+
 "border=\'0\' width=\'88\' height=\'31\'><\/a>")
 //--></script><!--/LiveInternet-->'.
 '</div>'.

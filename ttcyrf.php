@@ -26,6 +26,7 @@ function aylandir($s){
 	}
 	return $ns;
 	*/
+	
 	$words_count=preg_match_all('/\b\w+\b/u',$s,$words);
 	$spaces_count=preg_match_all('/\b\W+\b/u',$s,$spaces);
 	//$spaces_count=preg_match_all('/(\b|^)\W+(\b|$)/u',$s,$spaces);
@@ -56,6 +57,16 @@ function aylandir($s){
 	}
 	//echo $ns;
 	return $ns;
+	
+	/*
+	$words=preg_split('/(\W+)/u',$s);
+	$spaces=preg_split('/(\w+)/u',$s);
+	echo '<pre>';
+	//print_r($words);
+	var_dump($words);
+	var_dump($spaces);
+	echo '</pre>';
+	*/
 }
 
 
@@ -197,25 +208,42 @@ $convtatar=array(
 	'ч' => 'ç', 'Ч' => 'Ç',
 	'ш' => 'ş', 'Ш' => 'Ş',
 	'щ' => 'şç', 'Щ' => 'Şç',
-	//'ъ' => '', 'Ъ' => '',
+	'ъ' => '', 'Ъ' => '',
 	'ы' => 'ı', 'Ы' => 'I',
-	//'ь' => '', 'Ь' => '',
+	'ь' => '\'', 'Ь' => '\'',
 	'э' => 'e', 'Э' => 'E',
 	'ю' => 'yu', 'Ю' => 'Yu',
 	'я' => 'ya', 'Я' => 'Ya',
 );
 function convtatar($w){
 	global $convtatar;
-	$nw='';
-	for($i=0;$i<mb_strlen($w);$i++){
-		$letter=mb_substr($w,$i,1);
-		if(isset($convtatar[$letter])){
-			$nw.=$convtatar[$letter];
-		}else{
-			$nw.=$letter;
-		}
-	}
-	return $nw;
+	// $nw='';
+	// for($i=0;$i<mb_strlen($w);$i++){
+		// $letter=mb_substr($w,$i,1);
+		// if(isset($convtatar[$letter])){
+			// $nw.=$convtatar[$letter];
+		// }else{
+			// $nw.=$letter;
+		// }
+	// }
+	// return $nw;
+	$w = preg_replace( '/([аыоу])е/ui', '$1yı', $w );
+	$w = preg_replace( '/([әеө])е/ui', '$1ye', $w );
+	$w = preg_replace( '/([юү])е/ui', '$1we', $w );
+	$w = preg_replace( '/([юу])ы/ui', '$1wı', $w );
+	$w = preg_replace( '/([аәя])[уү]/ui', '$1w', $w );
+	$w = preg_replace( '/к([аыоуъ])/u', 'q$1', $w );
+	$w = preg_replace( '/К([аыоуАЫОУ])/u', 'Q$1', $w );
+	$w = preg_replace( '/га(\w+[ьәе])/u', 'ğə$1', $w );
+	//$w = preg_replace( '/г([аыоуъ])/u', 'ğ$1', $w );
+	$w = preg_replace( '/Г([аыоуАЫОУ])/u', 'Ğ$1', $w );
+	$w = preg_replace( '/\bе([шл])/ui', 'yı$1', $w );
+	$w = preg_replace( '/\bЕ([шл])/ui', 'Yı$1', $w );
+	$w = preg_replace( '/(\b|[ъь])е/ui', 'ye', $w );
+	$w = preg_replace( '/([аыıоуАЫIОУ])к/u', '$1q', $w );
+	$w = preg_replace( '/([аыоуАЫОУ]\w*[яЯ])к/u', '$1q', $w );
+	$w = preg_replace( '/([иә])я/ui', '$1yə', $w );
+	return strtr($w,$convtatar);
 }
 
 
