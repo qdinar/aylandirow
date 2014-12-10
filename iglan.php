@@ -83,7 +83,7 @@ $maglumat.
 ).
 $aylandirowwaqoto.'; '.$tw.
 ($kesislay?'<br />Бу бит 5 к&#1257;нг&#1241; кэшланган':'').
-'<br />'.($rus?'Время транслитерирования этой страницы':'Бу битне т&#1257;з&#1199; вакыты ').date('Y-m-d H:i:s').
+'<br />'.($rus?'Время транслитерирования этой страницы ':'Бу битне т&#1257;з&#1199; вакыты ').date('Y-m-d H:i:s').
 '. <!--LiveInternet counter--><script type="text/javascript"><!--
 document.write("<a href=\'//www.liveinternet.ru/click;aylandirow\' "+
 "target=_blank><img src=\'//counter.yadro.ru/hit;aylandirow?t52.1;r"+

@@ -19,8 +19,8 @@ header('Content-Type: text/html; charset=utf-8');
 <!--option value="yaponnantatarga" >японча язуны татарчага тәрҗемәләү</option-->
 <option value="ttcysuttlart1999" selected="true">татарча язуны кириллицадан ТР 1999ынчы ел законы латин язуына күчерү</option>
 <option value="ttcysuttlasu" >татарча кириллицадан СССРда 1928енче елны кабул ителгән латин язуына</option>
-<option value="cyrlatiso9a" >транслитерация русского текста по iso9a</option>
-<option value="cyrlatyandex" >транслитерация русского текста по транслитерация.рф "по яндексу"</option>
+<option value="cyrlatiso9a" >транслитерация русского текста с кириллицы на латиницу по iso9a</option>
+<option value="cyrlatyandex" >транслитерация русского текста с кириллицы на латиницу по транслитерация.рф "по яндексу"</option>
 </select><br />
 url:(http://)<input type="text" style="width:400px;" name="ba" value="tt.wikipedia.org" />
 <input type="submit" value="&gt;" name="url">
@@ -31,10 +31,13 @@ url:(http://)<input type="text" style="width:400px;" name="ba" value="tt.wikiped
 <br />Мисаллар:<br />
 <a href="http://tt.wikipedia.org.ttcysuttlart1999.<?php echo TOPDOMEN; ?>/wiki/%D0%91%D0%B0%D1%88_%D0%B1%D0%B8%D1%82">Википедия 1999 ел проекты латин язуында</a><br />
 <a href="http://tt.wikipedia.org.ttcysuttlasu.<?php echo TOPDOMEN; ?>/wiki/%D0%91%D0%B0%D1%88_%D0%B1%D0%B8%D1%82">Википедия "яңалиф"тә</a><br />
-<a href="http://kk.wikipedia.org.kkcysuttcysu-2.<?php echo TOPDOMEN; ?>/wiki/%D0%91%D0%B0%D1%81%D1%82%D1%8B_%D0%B1%D0%B5%D1%82">Бер аз хәзерге татар язуына әйләндерелгән <strong>казак</strong> Википедиясы</a><br />
+<!--a href="http://kk.wikipedia.org.kkcysuttcysu-2.<?php echo TOPDOMEN; ?>/wiki/%D0%91%D0%B0%D1%81%D1%82%D1%8B_%D0%B1%D0%B5%D1%82">Бер аз хәзерге татар язуына әйләндерелгән <strong>казак</strong> Википедиясы</a><br />
 <a href="http://ug.wikipedia.org.uygurdantatarga.<?php echo TOPDOMEN; ?>/wiki/%D8%A6%DB%87%D9%8A%D8%BA%DB%87%D8%B1%DA%86%DB%95_%DB%8B%D9%89%D9%83%D9%89%D9%BE%D9%89%D8%AF%D9%89%D9%8A%DB%95">Бер аз хәзерге татар язуына әйләндерелгән <strong>уйгыр</strong> Википедиясы</a><br />
 <a href="http://tr.wikipedia.org.toroktantatarga.<?php echo TOPDOMEN; ?>/wiki/Ana_Sayfa">Бер аз хәзерге татар язуына әйләндерелгән <strong>төрек</strong> Википедиясы</a><br />
-<!--a href="http://ja.wikipedia.org.yaponnantatarga.<?php echo TOPDOMEN; ?>/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">Өлешчә хәзерге татар теленә тәрҗемә ителгән <strong>япон</strong> Википедиясы</a><br /-->
+<a href="http://ja.wikipedia.org.yaponnantatarga.<?php echo TOPDOMEN; ?>/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">Өлешчә хәзерге татар теленә тәрҗемә ителгән <strong>япон</strong> Википедиясы</a><br /-->
+<br />Примеры:<br />
+<a href="http://ru.wikipedia.org.cyrlatiso9a.<?php echo TOPDOMEN; ?>/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0">Википедия на латинице ISO9A</a><br />
+<a href="http://ru.wikipedia.org.cyrlatyandex.<?php echo TOPDOMEN; ?>/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0">Википедия на латинице "по Яндексу" по транслитерация.рф</a><br />
 <br />Әйләндергеч <strong>турында сөйләшүләр</strong>:<br />
 <a href="http://tmf.org.ru/viewtopic.php?f=4&t=87">1999ынчы ел проекты татар латин язуына әйләндергеч турында</a><br />
 <a href="http://tmf.org.ru/viewtopic.php?f=4&t=85"><strong>казак</strong> язуын хәзерге татар язуына әйләндергеч турында</a><br />
