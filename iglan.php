@@ -41,7 +41,16 @@ if(isset($ba)){$maglumat.='<input type="text" name="ba" value="'.str_replace('&'
 $maglumat.='Латин язуы төре: <select name="yunalis">
 <option value="ttcysuttlart1999" '.($til=='ttcysuttlart1999'?'selected="selected" ':'').'>ТР 1999 проекты</option>
 <option value="ttcysuttlasu" '.($til=='ttcysuttlasu'?'selected="selected" ':'').'>"Я&#1187;алиф" СССР 1928-1940</option>
-</select><input type="submit" value="&gt;" />
+</select><input type="submit" value="&gt;" name="url" />
+</form>'
+;
+}elseif($rus){
+$maglumat.='<form method="POST" action="http://'.TOPDOMEN.'/" style="margin:0px;">'."\n";
+if(isset($ba)){$maglumat.='<input type="text" name="ba" value="'.str_replace('&','&amp;',$ba).'" style="width:100%;" /><br />'."\n";}
+$maglumat.='Вид латиницы: <select name="yunalis">
+<option value="cyrlatiso9a" '.($til=='cyrlatiso9a'?'selected="selected" ':'').'>ISO9A</option>
+<option value="cyrlatyandex" '.($til=='cyrlatyandex'?'selected="selected" ':'').'>"По Яндексу" (транслитерация.рф)</option>
+</select><input type="submit" value="&gt;" name="url" />
 </form>'
 ;
 }
