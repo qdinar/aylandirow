@@ -32,8 +32,8 @@ $rohsattil=array(
 //apc_clear_cache('user');//вапче конвертер үзгәргәч чистартасы
 mb_internal_encoding('UTF-8');
 libxml_use_internal_errors(true);
-$topdomeno=explode('.',TOPDOMEN);
-$topdomenoo=count($topdomeno);
+$topdomeno=explode('.',TOPDOMEN);//төп домен өлешләре
+$topdomenoo=count($topdomeno);//төп домен өлешләре озынлыгы
 //header("HTTP/1.0 404 Not Found");
 //header("Status: 404 Not Found");
 //header('HTTP/1.1 403 Forbidden');
@@ -45,7 +45,7 @@ $do=explode('.',$domain);//домейн өлешләре
 $doo=count($do);
 if($doo>$topdomenoo){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 	$til=$do[$doo-$topdomenoo-1];
-	if($doo>5){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
+	if($doo>$topdomenoo+1){//>5//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 		$bdo=array_slice($do,0,$doo-$topdomenoo-1);
 		$bd=implode('.',$bdo);
 		$ba=$bd.$ru;
@@ -116,7 +116,7 @@ if($doo>$topdomenoo){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 			exit;
 		}
 		}*/
-	}elseif($doo==5){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
+	}elseif($doo==$topdomenoo+1){//==5//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 		if($ru=='/referer'){
 			//echo('123');
 			if(substr($referer,0,7)=='http://'){
@@ -147,7 +147,7 @@ if($doo>$topdomenoo){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 	}
 }
 elseif($doo==$topdomenoo){//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
-	if($ru=='/'){
+	//if($ru=='/'){
 		// if(!isset($_POST['inputstr'])||$_POST['inputstr']==''){
 			// include 'topbit.php';
 		// }else
@@ -210,7 +210,7 @@ elseif($doo==$topdomenoo){//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 			include 'topbit.php';
 		}
 		exit;
-	}
+	//}
 	$til=mb_substr($ru,1,15);
 }
 

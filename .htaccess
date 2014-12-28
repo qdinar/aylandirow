@@ -7,7 +7,8 @@ Deny from 85.17.73.171
 deny from 109.120.163
 deny from 109.120.178.215
 deny from 92.243.68.58
-
+deny from 5.61.38.35
+deny from 5.61.38.105
 
 
 

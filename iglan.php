@@ -2,11 +2,7 @@
 
 $tw='';
 
-if($rus){
-	$reklama='Реклама: <a href="http://dinarkurbanov.wp.kukmara-rayon.ru" target="_blank">Личный сайт автора этого транслитератора</a>.<br />';
-}else{
-	$reklama='Реклама: <a href="http://qdinar.wp.kukmara-rayon.ru" target="_blank">Бу &#1241;йл&#1241;ндергеч авторыны&#1187; ш&#1241;хси сайты</a>.<br />';
-}
+include 'reklama.php';
 //.'<a href="http://tmf.org.ru/perevesti_yge/?t=tt" target="_blank">БДИны (Россияк&#1199;л&#1241;м) к&#1199;птелл&#1241;штер&#1199; &#1257;чен тавыш &#1175;ыю</a><br />'
 
 /*
@@ -123,7 +119,7 @@ if(is_object($body)){
 	}
 }
 
-if(is_object($body)&&($til=='ttcysuttlart1999'||$til=='ttcysuttlasu')){
+if(is_object($body)&&($til=='ttcysuttlart1999'||$til=='ttcysuttlasu'||$rus)){
 	$d2=new DOMDocument();
 	$d2->loadHTML('<html><body></body></html>');
 	$body2=$d2->getElementsByTagName('body');
