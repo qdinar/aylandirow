@@ -1,8 +1,3 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-RewriteRule .* index.php
 Deny from 85.17.73.171
 deny from 109.120.163
 deny from 109.120.178.215
@@ -10,6 +5,214 @@ deny from 92.243.68.58
 deny from 5.61.38.35
 deny from 5.61.38.105
 
+#91.236.120.91	[25/Jan/2015:11:20:19	+0300]	GET /wp-admin/admin-ajax.php?action=revslider_show_image&img=../wp-config.php HTTP/1.0	200	3268	http://beznen.ru.ttcysuttlart1999.aylandirow.tmf.org.ru/	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.45 Safari/535.19
+#89.178.136.191	[25/Jan/2015:11:23:36	+0300]	GET /register.php HTTP/1.0	200	14577	http://forum.kukmara-rayon.ru.ttcysuttlart1999.aylandirow.tmf.org.ru/register.php	Opera/9.80 (Windows NT 6.1; WOW64) Presto/2.12.388 Version/12.17
+deny from 88.72.127.139
+deny from 79.61.200.111
+deny from 79.61.201.26
+deny from 79.61.201.80
+deny from 81.214.37.197
+deny from 85.14.193.15
+deny from 85.2.32.69
+deny from 85.44.77.95
+deny from 85.44.79.125
+deny from 85.71.2.31
+deny from 88.72.126.86
+deny from 88.72.127.139
+deny from 88.72.96.190
+deny from 88.72.96.87
+deny from 91.101.55.198
+deny from 92.227.243.37
+deny from 92.227.243.40
+deny from 93.0.129.121
+deny from 93.0.129.33
+deny from 93.105.245.70
+deny from 93.106.34.84
+deny from 93.106.35.114
+deny from 93.106.35.196
+deny from 93.176.147.149
+deny from 94.29.185.189
+deny from 94.50.116.221
+deny from 94.50.116.23
+deny from 95.191.41.164
+deny from 95.226.220.21
+deny from 95.34.78.81
+deny from 95.88.190.206
+deny from 95.88.190.68
+deny from 95.88.191.109
+deny from 95.88.191.75
+deny from 3.95.131.69
+deny from 3.95.136.137
+deny from 3.95.138.110
+deny from 7.18.42.82
+deny from 7.230.212.91
+deny from 6.243.173.182
+deny from 9.110.18.145
+deny from 9.110.19.162
+deny from 9.178.136.191
+deny from 1.212.135.17
+deny from 1.215.137.174
+deny from 1.216.3.49
+deny from 1.233.89.219
+deny from 1.236.120.91
+deny from 1.238.114.72
+deny from 1.242.217.197
+
+#88.198.71.236 - - [26/Jan/2015:19:19:39 +0300] "GET /f-wafin.htm HTTP/1.0" 200 30704 "-" "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.10) Gecko/20050716 Firefox/1.0.6"
+deny from 88.198.71.236
+
+#136.243.36.83 - - [27/Jan/2015:08:50:35 +0300] "GET /feed/ HTTP/1.0" 200 21134 "-" "Mozilla/5.0 (compatible; BLEXBot/1.0; +http://webmeup-crawler.com/)"
+deny from 136.243.36.83
+
+deny from 188.40.88.209
+#188.40.88.209 - - [04/Feb/2015:10:29:39 +0300] "GET /search.php?action=show_unanswered HTTP/1.0" 302 - "-" "Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7"
+
+deny from 134.255.161.253
+deny from 134.255.161.254
+deny from 134.255.161.47
+deny from 134.255.161.88
+deny from 150.217.104.20
+deny from 178.157.192.43
+deny from 178.157.196.169
+deny from 178.253.216.27
+deny from 188.114.132.151
+deny from 188.114.135.166
+deny from 188.114.180.84
+deny from 188.114.182.228
+deny from 188.73.13.156
+deny from 2.139.180.222
+deny from 213.140.65.83
+deny from 213.17.1.189
+deny from 217.112.106.155
+deny from 217.59.197.142
+deny from 37.153.194.130
+deny from 46.37.126.215
+deny from 5.133.52.3
+deny from 5.133.57.201
+deny from 5.172.125.124
+deny from 77.27.74.211
+deny from 77.27.78.3
+deny from 77.27.79.170
+deny from 78.141.169.154
+deny from 78.147.121.13
+deny from 80.113.5.26
+deny from 80.67.12.253
+deny from 80.68.181.121
+deny from 81.21.138.9
+deny from 84.20.80.93
+deny from 84.232.79.250
+deny from 84.232.79.250
+deny from 85.150.29.118
+deny from 85.186.45.49
+deny from 88.159.80.180
+deny from 89.207.109.73
+deny from 89.242.233.147
+deny from 92.240.234.196
+deny from 92.26.241.102
+deny from 93.103.19.252
+deny from 94.199.13.197
+#217.112.106.155 - - [29/Jan/2015:12:10:59 +0300] "GET / HTTP/1.0" 200 123750 "http://dvtpp.ru/wp-content/themes/antioch/lib/scripts/download.php?file=../../../../../wp-config.php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.36 (KHTML, like Gecko) Chrome/13.0.766.0 Safari/534.36"
+
+deny from 179.61.200.111
+deny from 179.61.201.26
+deny from 179.61.201.80
+deny from 181.214.37.197
+deny from 185.14.193.15
+deny from 185.2.32.69
+deny from 185.44.77.95
+deny from 185.44.79.125
+deny from 185.71.2.31
+deny from 188.72.126.86
+deny from 188.72.127.139
+deny from 188.72.127.139
+deny from 188.72.96.190
+deny from 188.72.96.87
+deny from 191.101.55.198
+deny from 192.227.243.37
+deny from 192.227.243.40
+deny from 193.0.129.121
+deny from 193.0.129.33
+deny from 193.105.245.70
+deny from 193.106.34.84
+deny from 193.106.35.114
+deny from 193.106.35.196
+deny from 193.176.147.149
+deny from 193.176.147.149
+deny from 194.29.185.189
+deny from 194.50.116.221
+deny from 194.50.116.23
+deny from 195.191.41.164
+deny from 195.226.220.21
+deny from 195.34.78.81
+deny from 195.88.190.206
+deny from 195.88.190.68
+deny from 195.88.191.109
+deny from 195.88.191.75
+deny from 23.94.116.151
+deny from 23.95.131.69
+deny from 23.95.136.137
+deny from 23.95.138.110
+deny from 37.18.42.82
+deny from 37.230.212.91
+deny from 46.243.173.182
+deny from 79.110.18.145
+deny from 79.110.19.162
+deny from 89.178.136.191
+deny from 89.178.136.191
+deny from 89.178.136.191
+deny from 89.178.136.191
+deny from 89.178.136.191
+deny from 89.178.136.191
+deny from 91.212.135.17
+deny from 91.215.137.174
+deny from 91.216.3.49
+deny from 91.233.89.219
+deny from 91.236.120.91
+deny from 91.238.114.72
+deny from 91.242.217.197
+#188.72.127.139 - - [25/Jan/2015:11:20:17 +0300] "GET / HTTP/1.0" 200 123005 "http://mikesansone.com/wp-content/plugins/pica-photo-gallery/picadownload.php?imgname=../../../wp-config.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.45 Safari/535.19"
+
+deny from 144.76.27.118
+#144.76.27.118 - - [22/Feb/2015:06:17:02 +0300] "GET /node/5354 HTTP/1.0" 200 71325 "-" "Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +https://www.megaindex.ru/?tab=linkAnalyze)"
+
+deny from 78.46.174.55
+#78.46.174.55 - - [18/Feb/2015:22:06:16 +0300] "GET /comment/3315 HTTP/1.0" 200 71198 "-" "Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +https://www.megaindex.ru/?tab=linkAnalyze)"
+
+deny from 5.9.156.11
+#5.9.156.11 - - [23/Mar/2015:08:21:14 +0300] "GET /tat/news_send.htm HTTP/1.0" 200 43986 "-" "Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +https://www.megaindex.ru/?tab=linkAnalyze)"
+
+deny from 5.9.116.101
+#5.9.116.101 - - [22/Mar/2015:06:04:55 +0300] "GET /2010/10/04/twitter-critics/feed/ HTTP/1.0" 200 819 "-" "Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +https://www.megaindex.ru/?tab=linkAnalyze)"
+
+deny from 88.198.48.46
+#88.198.48.46 - - [22/Mar/2015:21:09:04 +0300] "GET /wiki/2010_\xd0\xb5\xd0\xbb HTTP/1.0" 200 136295 "-" "Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +https://www.megaindex.ru/?tab=linkAnalyze)"
+
+deny from 5.9.151.67
+#5.9.151.67 - - [22/Mar/2015:11:29:26 +0300] "GET /viewtopic.php?id=599 HTTP/1.0" 200 15064 "-" "Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +https://www.megaindex.ru/?tab=linkAnalyze)"
+
+deny from 5.9.156.11
+#5.9.156.11 - - [21/Mar/2015:00:34:24 +0300] "GET /rules_lib.htm HTTP/1.0" 200 79334 "-" "Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +https://www.megaindex.ru/?tab=linkAnalyze)"
+
+deny from 167.114.172.229
+#167.114.172.229 - - [01/Jun/2015:03:20:20 +0300] "GET /w/index.php?title=%d0%ae%d0%b3%d0%b0%d1%80%d1%8b_%d3%98%d1%81%d0%ba%d0%b8%d0%bf%d0%b0%d1%80%d0%b0&amp;action=edit&amp;redlink=1 HTTP/1.0" 200 23083 "-" "Domain Re-Animator Bot (http://domainreanimator.com) - support@domainreanimator.com"
+
+#210.124.118.212 - - [17/Aug/2015:10:06:04 +0300] "POST /wp-login.php HTTP/1.0" 200 3983 "http://www.xn--90aexm0e.xn--p1ai/wp-login.php" "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1; 125LA; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)"
+deny from 210.124.118.212
+
+#144.76.63.35 - - [03/Sep/2015:14:14:26 +0300] "GET /channel/UCNIYefKIZXt6qcNA9_RQtjg HTTP/1.0" 200 - "-" "Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +http://megaindex.com/crawler)"
+deny from 144.76.63.35
+
+#46.4.94.226 - - [03/Sep/2015:14:14:26 +0300] "GET /rubric/ahirzaman-galemetlere/ HTTP/1.0" 200 - "-" "Riddler (http://riddler.io/about)"
+deny from 46.4.94.226
+
+#144.76.15.235 - - [02/Sep/2015:14:30:20 +0300] "GET /news/?page=16 HTTP/1.0" 200 77402 "-" "Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +http://megaindex.com/crawler)"
+deny from 144.76.15.235
+
+#83.233.207.74 - - [01/Sep/2015:15:13:51 +0300] "GET / HTTP/1.0" 200 17894 "-" "Mozilla/4.0 (CMS Crawler: http://www.cmscrawler.com)"
+deny from 83.233.207.74
+
+#130.185.139.213 - - [01/Sep/2015:14:42:26 +0300] "GET / HTTP/1.0" 200 60819 "-" "-"
+deny from 130.185.139.213
 
 
 
@@ -27,10 +230,9 @@ deny from 5.61.38.105
 
 
 
-
-
-
-
-
-
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule .* index.php
 

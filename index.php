@@ -4,6 +4,7 @@
 //config
 define('TOPDOMEN','aylandirow.tmf.org.ru');
 $yuzeradmin=($_SERVER['REMOTE_ADDR']=='78.138.176.205');
+//if(!$yuzeradmin){exit;}
 $debug='';
 //$debug.='OK';
 /*if(function_exists('apc_fetch')){
@@ -43,15 +44,27 @@ $ru=$_SERVER['REQUEST_URI'];
 $domain=$_SERVER['HTTP_HOST'];
 $do=explode('.',$domain);//домейн өлешләре
 $doo=count($do);
+$referer=$_SERVER['HTTP_REFERER'];
+$ttcysusayt=array('matbugat.ru','gzalilova.narod.ru','belem.ru','beznen.ru','www.azatliq.org','forum.belem.ru',
+'adiplar.narod.ru'
+);
+include('aylandirilgan_url.php');
 if($doo>$topdomenoo){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 	$til=$do[$doo-$topdomenoo-1];
 	if($doo>$topdomenoo+1){//>5//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 		$bdo=array_slice($do,0,$doo-$topdomenoo-1);
-		$bd=implode('.',$bdo);
-		$ba=$bd.$ru;
-		//echo($bd);
-		//echo($ba);
-		//exit;
+		//print_r($bdo);exit;
+		if($bdo[0]=='https'){
+			$bdo=array_slice($bdo,1);
+			$bd=implode('.',$bdo);
+			$ba='https://'.$bd.$ru;
+		}else{
+			$bd=implode('.',$bdo);
+			$ba='http://'.$bd.$ru;
+		}
+		// echo($bd);
+		// echo($ba);
+		// exit;
 		if($bd=='www.matbugat.ru'){
 			header('Location: http://matbugat.ru.'.$til.'.'.TOPDOMEN.$ru);
 			exit;
@@ -68,7 +81,10 @@ if($doo>$topdomenoo){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 		if($ru=='/robots.txt'){
 			header('Content-Type: text/plain; charset=utf-8');
 			echo 'User-agent: *
-	Disallow: /';
+Disallow: /
+
+User-agent: *
+Crawl-delay: 20';
 			exit;
 		}
 		if(
@@ -121,21 +137,29 @@ if($doo>$topdomenoo){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 			//echo('123');
 			if(substr($referer,0,7)=='http://'){
 				$ba=substr($referer,7);
+				$pathstart=strpos($ba,'/');
+				if($pathstart===false){
+					header('Location: http://'. $ba. '.'. $til. '.'.TOPDOMEN.'/');
+				}else{
+					$bd=substr($ba,0,$pathstart);
+					$bp=substr($ba,$pathstart);
+					header('Location: http://'. $bd. '.'. $til. '.'.TOPDOMEN.$bp);
+				}
 			}elseif(substr($referer,0,8)=='https://'){
 				$ba=substr($referer,8);
+				$pathstart=strpos($ba,'/');
+				if($pathstart===false){
+					header('Location: http://'. $ba. '.'. $til. '.'.TOPDOMEN.'/');
+				}else{
+					$bd=substr($ba,0,$pathstart);
+					$bp=substr($ba,$pathstart);
+					header('Location: http://https.'. $bd. '.'. $til. '.'.TOPDOMEN.$bp);
+				}
 			}else{
 				header('Content-Type: text/html; charset=utf-8');
 				header("HTTP/1.1 404 Not Found");
 				echo('Дөрес реферер күрсәтелмәгән. Бу адресны копияләп куеп ачасы түгел, ә күчкегә басып ачасы, күчке торган бит әйләндерелеп күрсәтелә.');
 				exit;
-			}
-			$pathstart=strpos($ba,'/');
-			if($pathstart===false){
-				header('Location: http://'. $ba. '.'. $til. '.'.TOPDOMEN.'/');
-			}else{
-				$bd=substr($ba,0,$pathstart);
-				$bp=substr($ba,$pathstart);
-				header('Location: http://'. $bd. '.'. $til. '.'.TOPDOMEN.$bp);
 			}
 		}elseif($ru=='/'){
 			for($i=0;$i<count($ttcysusayt);$i++){
@@ -165,6 +189,7 @@ elseif($doo==$topdomenoo){//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 				echo('фтпны әйләндермәй!');
 				exit;
 			*/
+				$https=true;
 			}
 			/*
 			$domen='#^([\w\-]+\.)+[\w]+#ui';
@@ -191,11 +216,11 @@ elseif($doo==$topdomenoo){//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 			}//else кыскартасы түгел
 			
 			if($pathstart===false){
-				header('Location: http://'. idn_to_ascii(urldecode($ba)). '.'. $til. '.'.TOPDOMEN.'/');
+				header('Location: http://'.($https?'https.':''). idn_to_ascii(urldecode($ba)). '.'. $til. '.'.TOPDOMEN.'/');
 			}else{
 				$bd=substr($ba,0,$pathstart);
 				$bp=substr($ba,$pathstart);
-				header('Location: http://'. idn_to_ascii(urldecode($bd)). '.'. $til. '.'.TOPDOMEN.$bp);
+				header('Location: http://'.($https?'https.':''). idn_to_ascii(urldecode($bd)). '.'. $til. '.'.TOPDOMEN.$bp);
 			}
 			exit;
 		//}else{
@@ -244,12 +269,6 @@ if($til=='tatardantatarga'){
 	echo 'ok';
 }
 */
-$referer=$_SERVER['HTTP_REFERER'];
-$ttcysusayt=array('matbugat.ru','gzalilova.narod.ru','belem.ru','beznen.ru','www.azatliq.org','forum.belem.ru',
-'adiplar.narod.ru'
-);
-
-include('aylandirilgan_url.php');
 
 //else{//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 	// $ba=mb_substr($ru,17);//барасы адрес
@@ -298,7 +317,7 @@ exit;
 }//if(file_exists($kesfi))
 }//if($kesislay)
 
-$ba='http://'.$ba;
+//$ba='http://'.$ba;
 //if(function_exists('apache_request_headers')){
 //	$arh=apache_request_headers();
 //	$mts=$arh['If-Modified-Since'];
@@ -392,21 +411,33 @@ if(substr($referer,0,7)=='http://'){
 		$rd=substr($referer,0,$pathstart);
 		$rp=substr($referer,$pathstart);
 	}
-	$uzdo=21;//strlen('aylandirow.tmf.org.ru');//21
+	$uzdo=strlen(TOPDOMEN);//strlen('aylandirow.tmf.org.ru');//21
 	if(substr($rd,strlen($rd)-$uzdo)==TOPDOMEN){
 		$rdo=explode('.',$rd);
 		$rdoo=count($rdo);
 		//if(in_array($rdo[$rdoo-5],$rohsattil)){
 		if($rdoo>5){
 			array_splice($rdo,$rdoo-5,5);
-			$rd=implode('.',$rdo);
-			$referer='http://'.$rd.$rp;
+			if($rdo[0]=='https'){
+				array_splice($rdo,0,1);
+				$rd=implode('.',$rdo);
+				$referer='https://'.$rd.$rp;
+			}else{
+				$rd=implode('.',$rdo);
+				$referer='http://'.$rd.$rp;
+			}
 		}
 	}
 }
 
 curl_setopt($alu,CURLOPT_REFERER,$referer);
+curl_setopt($alu, CURLOPT_SSL_VERIFYPEER, false);
 $ic=curl_exec($alu);
+// if($ic===false){
+	// echo'error:'.curl_error($alu);
+	// print_r(curl_getinfo($alu));
+	// exit;
+// }
 $eu=curl_getinfo($alu,CURLINFO_EFFECTIVE_URL);
 $smt=curl_getinfo($alu,CURLINFO_FILETIME);//куелмаган булса -1 икән. куелган булса сан.
 $ct=curl_getinfo($alu,CURLINFO_CONTENT_TYPE);
@@ -432,7 +463,7 @@ if($hc==302||$hc==301){
 	}
 	$eu=curl_getinfo($alu,CURLINFO_EFFECTIVE_URL);
 	//if(substr($eu,8)=='https://'){
-	if( substr($eu,0,7)!='http://' ){
+	if( substr($eu,0,7)!='http://' && substr($eu,0,8)!='https://'){
 		header("HTTP/1.1 404 Not Found");
 		header('Content-Type: text/html; charset=utf-8');
 		echo('Бу әйләндергеч кабул итмәй торган протоколлы адреска күчерә');
@@ -441,7 +472,11 @@ if($hc==302||$hc==301){
 //	echo($ba.' '.$eu);
 	//if($doo>4){
 		//echo('ok');
-	$eu=substr($eu,7);//            example.com/
+	if( substr($eu,0,7)=='http://'){
+		$eu=substr($eu,7);//            example.com/
+	}elseif(substr($eu,0,8)=='https://'){
+		$eu='https.'.substr($eu,8);//            example.com/
+	}
 	$pathstart=strpos($eu,'/');
 	
 	$ikinoqtaurono=strpos($eu,':');
@@ -470,7 +505,7 @@ if($hc==302||$hc==301){
 	if( $portkursatilgan==true ){
 		header("HTTP/1.1 404 Not Found");
 		header('Content-Type: text/html; charset=utf-8');
-		echo('Бу әйләндергеч кабул итмәй торган портлы адреска күчерә');
+		echo('Бу әйләндергеч кабул итмәй торган портлы адреска күчерә ( '.$eu.' )');
 		exit;
 	}
 	
@@ -501,6 +536,7 @@ if($hc==304){
 	//$debug.=$hc;
 }
 
+//echo$ct;exit;//https аша эшләтергә җыенганда бу буш булып чыкты
 $cto=explode(';',$ct);//cto - контент тайп өлешләре
 if(count($cto)==2){//text html ; charset=utf-8
 	$cchseto=explode('=',$cto[1]);//c chset o - контент чарсет өлешләре
@@ -512,6 +548,7 @@ if(count($cto)==2){//text html ; charset=utf-8
 $ctype=$cto[0];//text html
 //if($ctype!='text/html'||strtolower($hecocha)!='utf-8'){
 if($ctype!='text/html'){
+	//echo'not text:'.$ctype;
 //моны башта тикшереп, аннары күчерергә кирәк
 	if($debug==''){
 		if($smt>0){ //әгәр сайт соңгы үзгәргән вакытын әйтсә генә хедыр җибәрәсе була
