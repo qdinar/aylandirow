@@ -214,14 +214,36 @@ deny from 83.233.207.74
 #130.185.139.213 - - [01/Sep/2015:14:42:26 +0300] "GET / HTTP/1.0" 200 60819 "-" "-"
 deny from 130.185.139.213
 
+#176.9.10.227 - - [10/Feb/2016:17:46:51 +0300] "GET /qazaqtantatarga/kk.wikipedia.org/wiki/%D0%A3%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D2%9A%D0%BE%D1%88_%D0%BA%D0%B5%D0%BB%D0%B4%D1%96%D2%A3%D1%96%D0%B7! HTTP/1.0" 200 6728 "-" "Mozilla/5.0 (compatible; MJ12bot/v1.4.5; http://www.majestic12.co.uk/bot.php?+)"
+deny from 176.9.10.227
+
+#46.173.182.143 - - [09/Feb/2016:04:47:29 +0300] "POST /index.php?s=10182b47ca5b545efb1f30771a14ca10&app=core&module=global&section=register&coppa_user=&termsread=1&coppa_pass=1 HTTP/1.0" 200 105792 "http://forum.belem.ru.ttcysuttlart1999.aylandirow.tmf.org.ru/index.php?s=10182b47ca5b545efb1f30771a14ca10&app=core&module=global&section=register" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT) ::ELNSB50::000061100320025802a00111000000000507000900000000"
+deny from 46.173.182.143
+
+#188.143.232.41 - - [09/Feb/2016:03:14:30 +0300] "POST /comments/1/8/../../../sitemap.html?errorCode=404 HTTP/1.0" 200 77098 "http://www.azatliq.org.ttcysuttlart1999.aylandirow.tmf.org.ru/comments/1/8/214876.html" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)"
+#188.143.232.43 - - [08/Feb/2016:23:28:20 +0300] "GET /wiki/%D0%91%D0%B0%D1%88_%D0%B1%D0%B8%D1%82 HTTP/1.0" 200 98333 "http://aylandirow.tmf.org.ru/qazaqtantatarga/kk.wikipedia.org/wiki/%D0%A1%D1%83%D1%80%D0%B5%D1%82:Sun_and_Eagle.svg" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)"
+deny from 188.143.232
 
 
+#5.79.68.56 - - [19/Sep/2016:20:03:55 +0300] "GET /news/?id=16319 HTTP/1.0" 200 52362 "-" "Mozilla/5.0 (compatible; LinkpadBot/1.07; +http://www.linkpad.ru)"
+#5.79.68.56 - - [19/Sep/2016:20:03:57 +0300] "GET /news/?id=16318 HTTP/1.0" 200 52307 "-" "Mozilla/5.0 (compatible; LinkpadBot/1.07; +http://www.linkpad.ru)"
+deny from 5.79.68.56
 
-
-
-
-
-
+#47.88.0.30 - - [09/Aug/2017:23:05:20 +0300] "GET /w/index.php?title=%D0%A2%D0%B0%D0%BC%D0%BE%D0%B6%D0%BD%D1%8F&action=edit&undoafter=845700&undo=845702 HTTP/1.0" 200 10205 "-" "okhttp/3.5.0"
+deny from 47.88.0.30
+deny from 47.88.2.245
+deny from 47.88.6.238
+deny from 47.88.18.59
+deny from 47.88.8.214
+deny from 47.88.20.17
+deny from 47.88.20.26
+deny from 47.88.8.177
+deny from 47.88.7.235
+deny from 47.88.19.119
+deny from 47.88.18.59
+deny from 47.88.16.208
+deny from 47.88.19.28
+deny from 47.88.18.25
 
 
 

@@ -23,6 +23,8 @@ $rohsattil=array(
 	'tatardantatarga',
 	'kkcysuttcysu-2',
 	'ttcysuttlart1999',
+	'ttcysuttlart1999-2',
+	'ttlart2012ttcysu',
 	'ttcysuttlasu',
 	'ttcysuttlaqdphon',
 	'inglizdantatarga',
@@ -44,10 +46,10 @@ $ru=$_SERVER['REQUEST_URI'];
 $domain=$_SERVER['HTTP_HOST'];
 $do=explode('.',$domain);//домейн өлешләре
 $doo=count($do);
-$referer=$_SERVER['HTTP_REFERER'];
+$referer=isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
 $ttcysusayt=array('matbugat.ru','gzalilova.narod.ru','belem.ru','beznen.ru','www.azatliq.org','forum.belem.ru',
-'adiplar.narod.ru'
-);
+'adiplar.narod.ru','tt.wikipedia.org');
+$ttlart1999sayt=array('www.trt.net.tr/tatarca/','tt.wikipedia.org/wiki/Ba%C5%9F_bit');
 include('aylandirilgan_url.php');
 if($doo>$topdomenoo){//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 	$til=$do[$doo-$topdomenoo-1];
@@ -88,11 +90,16 @@ Crawl-delay: 20';
 			exit;
 		}
 		if(
-	$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'||
-	$_SERVER['HTTP_USER_AGENT']=='Mail.Ru/1.0'||
-	$_SERVER['HTTP_USER_AGENT']=='Damaku'||
-	$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)'||
-	$_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; AhrefsBot/1.0; +http://ahrefs.com/robot/)'
+	// $_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'||
+	// $_SERVER['HTTP_USER_AGENT']=='Mail.Ru/1.0'||
+	// $_SERVER['HTTP_USER_AGENT']=='Damaku'||
+	// $_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)'||
+	// $_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; AhrefsBot/1.0; +http://ahrefs.com/robot/)'||
+	// $_SERVER['HTTP_USER_AGENT']=='Mozilla/5.0 (compatible; LinkpadBot/1.06; +http://www.linkpad.ru)'
+		preg_match(
+			'/Googlebot|(Ahrefs|Linkpad)bot|Mail\.Ru|Damaku|NetcraftSurveyAgent'
+			.'|MegaIndex\.ru/',
+			$_SERVER['HTTP_USER_AGENT'])
 		){
 		//	header('Location: http://aylandirow.tmf.org.ru/robots.txt');
 			header('HTTP/1.1 403 Forbidden');
@@ -162,9 +169,16 @@ Crawl-delay: 20';
 				exit;
 			}
 		}elseif($ru=='/'){
-			for($i=0;$i<count($ttcysusayt);$i++){
-				$au=aylandirilgan_url('http://'.$ttcysusayt[$i]);
-				echo"<a href=\"$au\" target=\"_blank\">{$ttcysusayt[$i]}</a> ";
+			if($til=='ttcysuttlart1999'||$til=='ttcysuttlart1999-2'||$til=='ttcysuttlasu'){
+				for($i=0;$i<count($ttcysusayt);$i++){
+					$au=aylandirilgan_url('http://'.$ttcysusayt[$i]);
+					echo"<a href=\"$au\" target=\"_blank\">{$ttcysusayt[$i]}</a> ";
+				}
+			}elseif($til=='ttlart2012ttcysu'){
+				for($i=0;$i<count($ttlart1999sayt);$i++){
+					$au=aylandirilgan_url('http://'.$ttlart1999sayt[$i]);
+					echo"<a href=\"$au\" target=\"_blank\">{$ttlart1999sayt[$i]}</a> ";
+				}
 			}
 		}
 		exit;
@@ -237,6 +251,10 @@ elseif($doo==$topdomenoo){//4//ex7.com6.tt5.ayl4.tmf3.org2.ru1
 		exit;
 	//}
 	$til=mb_substr($ru,1,15);
+}else{
+	$til='ttcysuttlart1999-2';
+	include 'topbit.php';
+	exit;
 }
 
 if(
@@ -295,7 +313,7 @@ if($til=='qazaqtantatarga'){
 	$kesislay=true;
 }//if($til=='ttcysuttlart1999')
 */
-if($kesislay){
+if(isset($kesislay)){
 $kesfi=str_replace('/','%2f',$ba);
 $kesfi='ttcysuttlart1999-kes/'.$kesfi;
 if(file_exists($kesfi)){
@@ -322,7 +340,7 @@ exit;
 //	$arh=apache_request_headers();
 //	$mts=$arh['If-Modified-Since'];
 //}else{
-	$mts=$_SERVER['HTTP_IF_MODIFIED_SINCE'];
+	$mts=isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])?$_SERVER['HTTP_IF_MODIFIED_SINCE']:'';
 //}
 $mt=strtotime($mts);
 $alu=curl_init($ba);
@@ -335,7 +353,9 @@ function aylandirgicwaqoto(){
 	
 	global $til;
 	$clmt=getlastmod();//converter last modified time
-	$clmt=max($clmt,filemtime('iglan.php'),filemtime('tuloadres.php'),filemtime('aylandirow.php'));
+	$clmt=max($clmt,
+		filemtime('iglan.php'),filemtime('tuloadres.php'),
+		filemtime('aylandirow.php'),filemtime('aylandirilgan_url.php'));
 	//if($til=='qazaqtantatarga'){
 	if($til=='kkcysuttcysu-2'){
 		$clmt=max($clmt,filemtime('qazaqtantatarga.php'),filemtime('qazaqtantatarga-yevropa.php'));
@@ -344,6 +364,9 @@ function aylandirgicwaqoto(){
 	}elseif($til=='ttcysuttlart1999'||$til=='ttcysuttlasu'){
 		//$clmt=max($clmt,filemtime('ttcysuttlart1999.php'));
 		$clmt=max($clmt,filemtime('ttcyttla.php'));//,filemtime('ttcyttla-k.php'),filemtime('ttcyttla-g.php'),filemtime('ttcyttla-yeyuya.php')
+	}elseif($til=='ttcysuttlart1999-2'||$til=='ttlart2012ttcysu'){
+		$clmt=max($clmt,filemtime('ttcysuttlart1999-2.php'));
+		$clmt=max($clmt,filemtime('ttcysuttlart1999-2-inc.php'));
 	}
 	elseif($til=='tatardantatarga'){
 		//$clmt=max($clmt,filemtime('test.php'));
@@ -355,6 +378,8 @@ function aylandirgicwaqoto(){
 	//}
 	elseif($til=='ttcyrf'){
 		$clmt=max($clmt,filemtime('ttcyrf.php'));
+	}else{
+		$clmt=max($clmt,filemtime('topbit.php'));
 	}
 	return $clmt;
 	

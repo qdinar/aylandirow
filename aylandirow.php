@@ -400,9 +400,9 @@ function yoropcoq($current_node){
 			if($current_child->hasAttribute('href')){
 				$h=$current_child->getAttribute('href');
 				$h=tuloadres($base,$h);
-				if(substr($h,0,7)=='http://'){//https кирәк түгел, калсын
+				// if(substr($h,0,7)=='http://'){//https кирәк түгел, калсын
 					$h=aylandirilgan_url($h);//әйләндерергә
-				}
+				// }
 				$current_child->setAttribute('href',$h);
 			}//if($current_child->hasAttribute('href'))
 			yoropcoq($current_child);
@@ -410,12 +410,12 @@ function yoropcoq($current_node){
 			elseif($current_child_tagname=='iframe'){
 			$h=$current_child->getAttribute('src');
 			$h=tuloadres($base,$h);
-			if(substr($h,0,7)=='http://'){//https кирәк түгел, калсын
+			// if(substr($h,0,7)=='http://'){//https кирәк түгел, калсын
 				if(USECACHE){
 					apc_store($h,true,20);
 				}
 				$h=aylandirilgan_url($h);//әйләндерергә
-			}
+			// }
 			$current_child->setAttribute('src',$h);
 			}//if($current_child->nodeName=='a')...elseif($current_child->nodeName=='iframe')...
 			elseif($current_child_tagname=='script'){
@@ -431,9 +431,9 @@ function yoropcoq($current_node){
 			elseif($current_child_tagname=='form'){
 				$h=$current_child->getAttribute('action');
 				$h=tuloadres($base,$h);
-				if(substr($h,0,7)=='http://'){//https кирәк түгел, калсын
+				// if(substr($h,0,7)=='http://'){//https кирәк түгел, калсын
 					$h=aylandirilgan_url($h);//әйләндерергә
-				}
+				// }
 				$current_child->setAttribute('action',$h);
 				yoropcoq($current_child);
 			}//if($current_child->nodeName=='a')............elseif($current_child->nodeName=='form')...
@@ -467,7 +467,9 @@ function yoropcoq($current_node){
 				if(count($mref)>1){
 					$metaurl=explode('=',$mref[1]);
 					$metaurl=$metaurl[1];
-					$current_child->setAttribute('content','0; URL='.aylandirilgan_url($metaurl));
+					$current_child->setAttribute(
+						'content','0; URL='.aylandirilgan_url($metaurl)
+					);
 				}//if(count($mref)>1)
 				}//if(strtolower($current_child->getAttribute('http-equiv'))=='refresh')
 			}//if($current_child->nodeName=='a')..elseif..elseif($current_child->nodeName=='meta')..
@@ -735,6 +737,20 @@ if($til=='kkcysuttcysu-2'){
 	define('ZUR_W',u('W'));
 	include('ttcyttla.php');
 	$forumtemaso='<a href="http://tmf.org.ru/viewtopic.php?f=4&amp;t=87" target="_blank">Татарча кириллицадан ТР 1999ынчы ел законы латин язуына әйләндергеч турында сөйләшәсең, сорыйсың килсә, монда бас</a>';
+}elseif($til=='ttcysuttlart1999-2'){
+	include('ttcysuttlart1999-2.php');	
+	function aylandir($s){
+		$x = new TtConverter(null,'tt');
+		$s = $x->translate( $s, 'tt-latn-x-2000' );
+		return $s;
+	}
+}elseif($til=='ttlart2012ttcysu'){
+	include('ttcysuttlart1999-2.php');
+	function aylandir($s){
+		$x = new TtConverter(null,'tt');
+		$s = $x->translate( $s, 'tt-cyrl' );
+		return $s;
+	}
 }elseif($til=='ttcysuttlasu'){
 	/*define('KICI_U','y');
 	define('ZUR_U','Y');

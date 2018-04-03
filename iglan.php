@@ -25,7 +25,7 @@ if($rus){
 }else{
 	$maglumat='Мәгълүмат: ';
 }
-if($til=='ttcysuttlart1999'||$til=='ttcysuttlasu'){
+if($til=='ttcysuttlart1999'||$til=='ttcysuttlasu'||$til=='ttcysuttlart1999-2'){
 $maglumat.=$forumtemaso.'.<br />';
 if(!$kesislay){
 $maglumat.=($til=='ttcysuttlart1999'?'Бу сайт авторына бу латин язуы ошамый! Ч&#1257;нки латин язуыны&#1187; б&#1257;тен &#1257;стенлекл&#1241;рен кулланмый, киресенч&#1241;, зыянлы итеп куллана. Аны&#1187; тыелуы турында мин уйлыйм: Аллага ш&#1257;кер!<br />
@@ -37,6 +37,7 @@ if(isset($ba)){$maglumat.='<input type="text" name="ba" value="'.str_replace('&'
 $maglumat.='Латин язуы төре: <select name="yunalis">
 <option value="ttcysuttlart1999" '.($til=='ttcysuttlart1999'?'selected="selected" ':'').'>ТР 1999 проекты</option>
 <option value="ttcysuttlasu" '.($til=='ttcysuttlasu'?'selected="selected" ':'').'>"Я&#1187;алиф" СССР 1928-1940</option>
+<option value="ttcysuttlasu" '.($til=='ttcysuttlart1999-2'?'selected="selected" ':'').'>ТР 1999 проекты, яңа конвертер программасы</option>
 </select><input type="submit" value="&gt;" name="url" />
 </form>'
 ;
@@ -119,7 +120,7 @@ if(is_object($body)){
 	}
 }
 
-if(is_object($body)&&($til=='ttcysuttlart1999'||$til=='ttcysuttlasu'||$rus)){
+if(is_object($body)&&($til=='ttcysuttlart1999'||$til=='ttcysuttlasu'||$rus||$til=='ttcysuttlart1999-2')){
 	$d2=new DOMDocument();
 	$d2->loadHTML('<html><body></body></html>');
 	$body2=$d2->getElementsByTagName('body');

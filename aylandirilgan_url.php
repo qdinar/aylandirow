@@ -6,7 +6,15 @@ function aylandirilgan_url($h){//http:// белән генә дөрес эшли
 	global $til,$debug;
 	//$debug.=$h;
 	//if($doo>4){
-	$h=substr($h,7);
+	$https=false;
+	if(substr($h,0,7)=='http://'){
+		$h=substr($h,7);
+	}elseif(substr($h,0,8)=='https://'){
+		$h=substr($h,8);
+		$https=true;
+	}else{
+		return $h;
+	}
 	$ikinoqtaurono=strpos($h,':');
 	$pathstart=strpos($h,'/');
 	
@@ -37,19 +45,22 @@ function aylandirilgan_url($h){//http:// белән генә дөрес эшли
 	}else{
 		$hd=substr($h,0,$pathstart);
 	}
+	if($https){
+		$hd='https.'.$hd;
+	}
 	//$debug.=substr($hd,-22);
 	//$debug.=$hd;
 	//$debug.=$h;
 	if(substr($hd,-22)=='.'.TOPDOMEN){
-		return 'http://'. $h;
+		return 'http://'.  $hd;
 	}
 	
 	if($pathstart===false){
-		return 'http://'. $h. '.'. $til. '.'.TOPDOMEN.'/';
+		return 'http://'.  $hd. '.'. $til. '.'.TOPDOMEN.'/';
 	}else{
 		//$hd=substr($h,0,$pathstart);
 		$hp=substr($h,$pathstart);
-		return 'http://'. $hd. '.'. $til. '.'.TOPDOMEN.$hp;
+		return 'http://'.  $hd. '.'. $til. '.'.TOPDOMEN.$hp;
 	}
 	//}else{
 	//	return 'http://aylandirow.tmf.org.ru/'.$til.'/'.substr($h,7);
