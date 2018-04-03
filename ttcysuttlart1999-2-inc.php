@@ -1,6 +1,7 @@
 <?php
 
 
+// this code is copied from mediawiki
 
 class ReplacementArray {
 	private $data = false;

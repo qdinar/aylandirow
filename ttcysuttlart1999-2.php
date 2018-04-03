@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/ttcysuttlart1999-2-inc.php';
 
+// this code is copied from change for mediawiki
+// https://gerrit.wikimedia.org/r/#/c/164049/
+
 
 /**
  * @ingroup Language
